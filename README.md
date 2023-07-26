@@ -43,13 +43,13 @@ O que veremos na aula de hoje?
 
   - [Recapitulando](#recapitulando)
 
-    - [Estrutura da POO](#es6-instantiation)
-    - [Os 4 pilares da POO](#es6-instantiation)
-      - [Abstração](#es6-instantiation)
-      - [Encapsulamento](#es6-instantiation)
+    - [Estrutura da POO](#estrutura-da-poo)
+    - [Os 4 pilares da POO](#os-4-pilares-da-poo)
+      - [Abstração](#abstração)
+      - [Encapsulamento](#encapsulamento)
 
-  - [Pilares de OO - Herança](./5.%20Introdu%C3%A7%C3%A3o%20%C3%A0%20Orienta%C3%A7%C3%A3o%20a%20Objeto%20I//5.1%20-%20Paradigmas%20de%20programa%C3%A7%C3%A3o.md)
-  - [Pilares de OO - Polimorfismo](./5.%20Introdu%C3%A7%C3%A3o%20%C3%A0%20Orienta%C3%A7%C3%A3o%20a%20Objeto%20I//5.2%20-%20Programa%C3%A7%C3%A3o%20Orientada%20a%20Objetos.md)
+  - [Pilares de OO - Herança](./6.%20Introdu%C3%A7%C3%A3o%20%C3%A0%20Orienta%C3%A7%C3%A3o%20a%20Objeto%20II/6.1%20-%20Heran%C3%A7a.md)
+  - [Pilares de OO - Polimorfismo](./6.%20Introdu%C3%A7%C3%A3o%20%C3%A0%20Orienta%C3%A7%C3%A3o%20a%20Objeto%20II/6.2%20-%20Polimorfismo.md)
 
 - [Exercícios](#exercícios)
 - [Material da aula](#material-da-aula)
@@ -59,51 +59,120 @@ O que veremos na aula de hoje?
 # Conteúdo
 
 ## Recapitulando...
+A programação orientada a objetos é um paradigma de programação que fornece um modelo no qual um programa é uma coleção de objetos que interagem entre si, passando mensagens que transformam seu estado.
 
-### ES6 Instantiation
+Neste caso, todos os objetos possuem determinados estados e comportamentos. Enquanto os estados são descritos pelas classes como **atributos**, a forma como eles se comportam é definida por meio de **métodos**. 
 
-ES6 é um encurtamento de ECMAScript 6. A `ES6 Instantiation` utiliza a palavra-chave `class` ao invés de criar uma função regular. A classe então se torna uma função construtora quando criamos o `constructor` dentro dela.
+### Estrutura da POO
+A Programação Orientada a Objetos possui dois pilares de sustentação: a utilização de classes e objetos.
+Além de possuírem, dentro dessas, atributos e métodos.
 
-Os métodos para o objeto também são implementados dentro do escopo da classe:
+As **classes** são formas de definir objetos que serão reutilizados e instanciados durante o código.
 
+Os **objetos** são instâncias de classes criadas com dados específicos.
+
+Enquanto classes são como definições do conceito de uma entidade do mundo real, objetos são a representação de um exemplar da entidade.
+
+**Atributos** são as *características* que as classes (e, por consequência, seus objetos) possuem.
+
+**Métodos** são as *funções* que a classe (e, por consequência, seus objetos) possuem.
+
+**Métodos e atributos privados** são aqueles que ficam acessíveis apenas dentro da classe. Para isso, utilizamos `#` antes do nome. Além disso, temos os métodos `get` e `set` que nos auxiliam a acessar ou alterar atributos privados de uma maneira controlada e segura.
+
+**Métodos e atributos estáticos** são aquelas que pertencem à classe, não aos objetos instanciados a partir dela. Para isso, utilizamos a palavra-chave `static`.
+
+Exemplo:
 ```javascript
-class Animal {
-  type;
-  name;
-  age;
-  energy;
+class Funcionario {
+  nome;
+  #salario;
 
-  constructor(type, name, age) {
-    this.type = type;
-    this.name = name;
-    this.age = age;
-    this.energy = 0;
+  static funcionarios = [];
+
+  constructor(nome, salario) {
+    this.nome = nome;
+    this.#salario = salario;
+    this.constructor.funcionarios.push(this.nome);
   }
 
-  eat() {
-    console.log(`O ${this.type} chamado ${this.name} está comendo`);
+  get salario() {
+    return this.#salario;
   }
 
-  sleep(hours) {
-    console.log(`O ${this.type} chamado ${this.name} está dormindo`);
-    this.energy += hours;
-    console.log(`Energia atual: ${this.energy}`);
+  set salario(novoSalario) {
+    this.#salario = novoSalario;
+  }
+
+  receberBonusMensal(bonus) {
+    //..
+  }
+
+  #receberAumento(aumento) {
+    //...
+  }
+
+  static removerFuncionario(funcionario) {
+    //...
   }
 }
-
-const animal1 = new Animal('cachorro', 'Aslam', 3);
-console.log(animal1);
 ```
 
-Spoiler: quando escrevemos nosso programa dessa maneira, estamos utilizando a **Programação Orientada a Objetos**. Dá pra perceber desde já o porquê ela leva esse nome, né? Estamos tratando, desde o início, de objetos e de maneiras de criá-los e modificá-los.
+### Os 4 pilares da POO
+Na prática, para a POO funcionar, ela precisa utilizar de 4 pilares básicos. São eles:
+- Abstração
+- Encapsulamento
+- Herança
+- Polimorfismo
 
-## [Paradigmas de programação](./5.%20Introdu%C3%A7%C3%A3o%20%C3%A0%20Orienta%C3%A7%C3%A3o%20a%20Objeto%20I//5.2%20-%20Programa%C3%A7%C3%A3o%20Orientada%20a%20Objetos.md)
+#### Abstração
+Abstrair algo significa esconder os detalhes da implementação dentro de algo.
 
-## [Programação Orientada a Objetos](./5.%20Introdu%C3%A7%C3%A3o%20%C3%A0%20Orienta%C3%A7%C3%A3o%20a%20Objeto%20I//5.2%20-%20Programa%C3%A7%C3%A3o%20Orientada%20a%20Objetos.md)
+Na Orientação a Objetos, a abstração consiste em extrair entidades do mundo real para dentro do código seguindo a fio suas responsabilidades.
 
-## [Pilares de OO - Abstração](./5.%20Introdu%C3%A7%C3%A3o%20%C3%A0%20Orienta%C3%A7%C3%A3o%20a%20Objeto%20I//5.3%20-%20Abstra%C3%A7%C3%A3o.md)
+Na POO, podemos utilizar diagrama de classe em UML para representar as nossas classes de uma maneira simples, abstraindo as implementações:
 
-## [Pilares de OO - Encapsulamento](./5.%20Introdu%C3%A7%C3%A3o%20%C3%A0%20Orienta%C3%A7%C3%A3o%20a%20Objeto%20I//5.4%20-%20Encapsulamento.md)
+<div style="text-align:center;">
+  <img src="https://github.com/reprograma/on25-IJS-orientacao-objetos-I/assets/26902816/af4931f0-f032-43fa-acf8-4efc2cdf61dd" width="300px" />
+</div>
+
+#### Encapsulamento
+Quando definimos os atributos de um objeto, devemos garantir que alterar os valores desses atributos sejam responsabilidade exclusiva do próprio objeto. O encapsulamento, portanto, é o conceito de proteger os atributos de um objeto.
+
+Para que isso seja possível, podemos utilizar o conceito de métodos e atributos privados, dando acesso de leitura e edição apenas quando fizer sentido e para quem tiver permissão. Nesse caso, utilizamos os métodos `get` e `set`.
+
+```javascript
+class Funcionario {
+  nome;
+  #salario;
+  #temPermissao;
+
+  constructor(nome, salario, temPermissao) {
+    this.nome = nome;
+    this.#salario = salario;
+    this.#temPermissao = temPermissao;
+  }
+
+  get salario() {
+    if(this.temPermissao) {
+      return this.#salario;
+    }
+  }
+
+  set salario(novoSalario) {
+    if(this.temPermissao) {
+      this.#salario = novoSalario;
+    }
+  }
+}
+```
+
+#### → Vamos aplicar?
+- [ ] [Exercício 1](./Exerc%C3%ADcios/Para%20sala/Exerc%C3%ADcio%201/)
+- [ ] [Exercício 2](./Exerc%C3%ADcios/Para%20sala/Exerc%C3%ADcio%202/)
+
+## [Pilares de OO - Herança](./6.%20Introdu%C3%A7%C3%A3o%20%C3%A0%20Orienta%C3%A7%C3%A3o%20a%20Objeto%20II/6.1%20-%20Heran%C3%A7a.md)
+
+## [Pilares de OO - Polimorfismo](./6.%20Introdu%C3%A7%C3%A3o%20%C3%A0%20Orienta%C3%A7%C3%A3o%20a%20Objeto%20II/6.2%20-%20Polimorfismo.md)
 
 ### Exercícios
 
@@ -112,11 +181,11 @@ Spoiler: quando escrevemos nosso programa dessa maneira, estamos utilizando a **
 
 ### Material da aula
 
-- [Material](./5.%20Introdu%C3%A7%C3%A3o%20%C3%A0%20Orienta%C3%A7%C3%A3o%20a%20Objeto%20I/)
+- [Material](./6.%20Introdu%C3%A7%C3%A3o%20%C3%A0%20Orienta%C3%A7%C3%A3o%20a%20Objeto%20II/)
 
 ### Links Úteis
-- [Javascript.info - Array methods](https://javascript.info/array-methods)
-- [Mozilla - Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+<!-- - [Javascript.info - Array methods](https://javascript.info/array-methods)
+- [Mozilla - Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) -->
 
 ### Contatos da prô
 
@@ -125,5 +194,5 @@ Spoiler: quando escrevemos nosso programa dessa maneira, estamos utilizando a **
 - [Instagram](https://www.instagram.com/luaratech/)
 
 <p align="center">
-  Desenvolvido com &#128156
+  Desenvolvido com &#128156 por Luara Kerlen
 </p>
