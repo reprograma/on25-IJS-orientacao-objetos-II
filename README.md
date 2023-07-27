@@ -167,8 +167,8 @@ class Funcionario {
 ```
 
 #### → Vamos aplicar?
-- [ ] [Exercício 1](./Exerc%C3%ADcios/Para%20sala/Exerc%C3%ADcio%201/)
-- [ ] [Exercício 2](./Exerc%C3%ADcios/Para%20sala/Exerc%C3%ADcio%202/)
+<!-- - [ ] [Exercício 1](./Exerc%C3%ADcios/Para%20sala/Exerc%C3%ADcio%201/)
+- [ ] [Exercício 2](./Exerc%C3%ADcios/Para%20sala/Exerc%C3%ADcio%202/) -->
 
 ## [Pilares de OO - Herança](./6.%20Introdu%C3%A7%C3%A3o%20%C3%A0%20Orienta%C3%A7%C3%A3o%20a%20Objeto%20II/6.1%20-%20Heran%C3%A7a.md)
 
