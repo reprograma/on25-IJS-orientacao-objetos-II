@@ -5,15 +5,24 @@
 
 ## Exercício 5
 
-Crie uma classe `Animal`.
+Crie uma classe `Ingresso`.
 
-Essa classe deve possuir os seguintes atributos, recebidos no construtor:
-- [ ] `Nome`
-- [ ] `Idade`
+Essa classe deve possuir os atributos:
+- [ ] `Lote`, que será recebido no construtor e pode receber um dos valores:
+  - [ ] `'promocional'`: Lote promocional
+  - [ ] `'primeiro'`: Primeiro lote
+  - [ ] `'segundo'`: Segundo lote
+  - [ ] `'terceiro'`: Terceiro lote
 
-Agora, crie uma classe `Cachorro`, que é herdeira da classe `Animal`.
-Sobrescreva o construtor para que ele receba, além dos atributos da classe mãe, os seguintes atributos:
-- [ ] `CorDoPelo`
-- [ ] `Porte` (pequeno, médio ou grande)
+- [ ] `Preco`, que será o valor do ingresso de acordo com o lote. Esse atributo **não** será recebido no constructor.
 
-Teste tudo o que foi criado.
+Crie um método `mostrarPreco` que mostra na console o preço do ingresso, de acordo com o lote daquele ingresso.
+
+Teste o que foi criado até o momento.
+
+Agora, crie uma classe `IngressoNormal`, que é herdeira da classe `Ingresso`.
+
+Agora, crie uma classe `IngressoVIP` que é herdeira da classe `Ingresso` e deverá ter preços mais caros para cada lote.
+Essa classe não precisará de nenhum construtor nem método, mas os preços exibidos devem ser diferentes (mais caros) daqueles da classe `Ingresso`.
+
+Teste o que foi criado.
