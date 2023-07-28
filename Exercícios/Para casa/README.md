@@ -108,3 +108,13 @@ Por fim, a classe `SavingAccount` deve possuir o seguinte método:
 - [ ] `generateIncome(currentDay)`, que recebe como o atributo o dia atual e, caso o dia atual seja igual ao dia de rendimento (`incomeDay`), deve atualizar o saldo, somando o valor rendido. Retorne o novo saldo na console.
 
 Teste tudo o que foi criado.
+
+___
+
+DESAFIO:
+> Essa etapa **não** é obrigatória!!!
+
+Sua chefe busca uma pessoa que consiga desenvolver uma nova atualização para o sistema, e dará uma promoção para as pessoas desenvolvedoras que toparem!
+
+A atualização é a seguinte:
+
