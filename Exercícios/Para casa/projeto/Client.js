@@ -19,7 +19,7 @@ class Client {
 
 	hasAccountInThisBank(bank) {
 		return (
-			this.banks.find((element) => element.bankCode === bank.bankCode) !== // DESAFIO: element.banksCode agora será element.bank.bankCode
+			this.banks.find((element) => element.bankCode === bank.bankCode) !== // DESAFIO: element.bankCode agora será element.bank.bankCode
 			undefined
 		);
 	}
@@ -63,7 +63,7 @@ class Client {
 		}
 
 		this.banks = this.banks.filter(
-			(element) => element.bankCode !== bank.bankCode // DESAFIO: element.banksCode agora será element.bank.bankCode
+			(element) => element.bankCode !== bank.bankCode // DESAFIO: element.bankCode agora será element.bank.bankCode
 		);
 		const bankIndex = Bank.createdBanks.findIndex(
 			(element) => element.bankCode === bank.bankCode

@@ -89,7 +89,7 @@ class BankAccount {
 	closeAccount() {
 		if (this.#balance === 0) {
 			console.log(
-				`CoEncerrando conta de ${this.client.name} no banco ${this.bank.bankName}.`
+				`Encerrando conta de ${this.client.name} no banco ${this.bank.bankName}.`
 			);
 			this.client = undefined;
 			this.accountNumber = undefined;

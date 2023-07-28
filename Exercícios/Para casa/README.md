@@ -117,4 +117,48 @@ DESAFIO:
 Sua chefe busca uma pessoa que consiga desenvolver uma nova atualização para o sistema, e dará uma promoção para as pessoas desenvolvedoras que toparem!
 
 A atualização é a seguinte:
+- A partir de agora, teremos pessoas gerentes.
+- Cada banco terá um ou mais gerentes.
+- Cada cliente, quando se associar a um banco, terá um gerente daquele banco, escolhido de maneira aleatória.
+- Os gerentes sabem quem são seus clientes.
 
+Vamos entender como serão as nossas atualizações de código:
+### Person
+Crie uma Classe `Person` que terá os seguintes atributos:
+- [ ] `name`, recebido por instanciação
+- [ ] `#cpf`, privado, recebido por instanciação e com um método get
+
+### Manager
+Crie uma classe `Manager` herdando de `Person`:
+- Atributos:
+  - [ ] `#salary`, privado, recebido por instanciação, com métodos get e set
+  - `clients`, deve ser inicializado com uma array vazia
+
+- Métodos:
+  - [ ] `addClient(client)`, adiciona um novo cliente na array `clients`
+
+### Bank
+A classe `Bank` deve ser alterada da seguinte maneira:
+- Criar um atributo `managers`, responsável por guardar os gerentes daquele banco. Inicializada com uma array vazia.
+- Criar um método `contractManager(manager)`, responsável por adicionar um novo gerente na array `managers`. Deve ser feita uma validação para confirmar se o parâmetro recebido é um gerente válido.
+
+### Client
+A classe `Client` deve ser alterada da seguinte maneira:
+- Deve ser herdada de `Person`. Com isso, as declarações e métodos que vêm da classe mãe não estarão mais na classe `Client`.
+
+- Métodos novos:
+  - `#getAnyManager(bank)`, privado, a ser usado apenas dentro da própria classe.
+    - Busca e retorna, de maneira aleatória, um gerente do array de gerentes do banco.
+    - Chama a função `addClient()` daquele gerente escolhido, passando o nome do cliente.
+
+- Métodos alterados:
+  - `addBank(bank)`:
+    - Chama o método `#getAnyManager(bank)`, para buscar um gerente para aquele cliente.
+    - Adiciona na array `banks`, além do banco, o gerente escolhido. Agora, `banks` é uma array de objetos.
+    - Imprime na console, além da confirmação de adição do banco, o nome da gerente escolhida.
+  - `removeBank(bank)`: `element.bankCode` agora será `element.bank.bankCode`, pois agora banks é uma array de objetos
+  - `hasAccountInThisBank(bank)`: `element.bankCode` agora será `element.bank.bankCode`, pois agora banks é uma array de objetos
+
+### BankAccount
+A classe `BankAccount` deve ser alterada da seguinte maneira:
+- No constructor, no momento em que se valida se o cliente tem conta naquele banco, `element.bankCode` agora será `element.bank.bankCode`, pois agora banks é uma array de objetos.
