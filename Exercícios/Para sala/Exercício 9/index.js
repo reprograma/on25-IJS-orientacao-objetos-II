@@ -80,3 +80,25 @@ class AssistenteTecnico extends Assistente {
 // const assistenteTecnico = new AssistenteTecnico('Lais', 123456789, 10000, 111, 1000)
 // assistenteTecnico.receberAumento()
 // assistenteTecnico.exibirDados()
+
+class AssistenteAdministrativo extends Assistente {
+  turno;
+  adicionalNoturno;
+
+  constructor(nome, cpf, salario, matricula, turno, adicionalNoturno) {
+    super(nome, cpf, salario, matricula);
+    this.turno = turno;
+    this.adicionalNoturno = adicionalNoturno;
+  }
+
+  exibirDados() {
+    super.exibirDados();
+    console.log(`Turno: ${this.turno}`);
+    if(this.turno === 'noite') {
+      console.log(`Adicional noturno: ${this.adicionalNoturno}`);
+    }
+  }
+}
+
+const assistenteAdm = new AssistenteAdministrativo('Lara', 123456768, 10000, 111, 'dia', 500)
+assistenteAdm.exibirDados()
