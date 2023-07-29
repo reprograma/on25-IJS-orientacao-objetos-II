@@ -41,6 +41,42 @@ class Gerente extends Funcionario {
   }
 }
 
-const gerente1 = new Gerente('Debora', 123456789, 1000, 'Junior');
-gerente1.receberAumento();
-gerente1.exibirDados();
+// const gerente1 = new Gerente('Debora', 123456789, 1000, 'Junior');
+// gerente1.receberAumento();
+// gerente1.exibirDados();
+
+class Assistente extends Funcionario {
+  matricula;
+
+  constructor(nome, cpf, salario, matricula) {
+    super(nome, cpf, salario);
+    this.matricula = matricula;
+  }
+
+  exibirDados() {
+    super.exibirDados();
+    console.log(`Matrícula: ${this.matricula}`);
+  }
+}
+
+// const assistente = new Assistente('Josefa', 1234567, 1000, 111);
+// assistente.receberAumento();
+// assistente.exibirDados();
+
+class AssistenteTecnico extends Assistente {
+  bonusSalarial;
+
+  constructor(nome, cpf, salario, matricula, bonusSalarial) {
+    super(nome, cpf, salario, matricula);
+    this.bonusSalarial = bonusSalarial;
+  }
+
+  exibirDados() {
+    super.exibirDados();
+    console.log(`Bônus salarial: ${this.bonusSalarial}`);
+  }
+}
+
+// const assistenteTecnico = new AssistenteTecnico('Lais', 123456789, 10000, 111, 1000)
+// assistenteTecnico.receberAumento()
+// assistenteTecnico.exibirDados()
