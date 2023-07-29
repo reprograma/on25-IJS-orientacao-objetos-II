@@ -26,8 +26,8 @@ Antes de começar, vamos organizar nosso setup.
 
 ### Objetivo
 
-- Introduzir o conceito de paradigma de programação;
-- Entender o que são classes e objetos e qual é a diferença entre os dois conceitos.
+- Entender o conceito de herança e polimorfismo;
+- Aplicar todos os conceitos de POO.
 
 ### Resumo
 
