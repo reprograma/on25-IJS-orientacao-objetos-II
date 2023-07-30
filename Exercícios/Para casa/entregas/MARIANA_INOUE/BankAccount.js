@@ -40,8 +40,16 @@ class BankAccount {
 	}
 
 	set balance(newBalance) {
-		this.#balance = newBalance;
+		 this.#balance = newBalance;
 	}
+
+	balanceAdd(newBalance) {
+		console.log(`Saldo da conta sem o rendimento é: R$${this.#balance}`);
+		let plusTax = newBalance * 100
+
+		this.#balance += plusTax;
+		console.log(`Hoje é o dia de rendimento do investimento. Novo saldo da conta é: R$ ${this.#balance}`);
+   }
 
 	creditAmount(amount) {
 		this.#balance += amount;
@@ -49,9 +57,16 @@ class BankAccount {
 	}
 
 	debitAmount(amount) {
-		this.#balance -= amount;
-		console.log(`O novo saldo da conta é: R$ ${this.#balance}`);
+	if (this.#balance <= amount) {
+		console.log(`Não foi possível realizar a operação. Saldo insuficiente R$${this.#balance}`)
+		console.log(`Tente novamente, quando o saldo estiver positivo.`)
+		return
+	} else {
+	this.#balance -= amount;
+		console.log(`O novo saldo da conta é: R$ ${this.#balance}`)}
+		console.log(`O valor do saque é: R$ ${amount}`)
 	}
+
 
 	transferTo(anotherAccount, amount) {
 		if (!(anotherAccount instanceof BankAccount)) {
@@ -107,12 +122,12 @@ class BankAccount {
 	cashWithdrawal(amount) {
 		if (this.#balance >= amount) {
 			this.debitAmount(amount)
-			console.log(`Saque realizado com sucesso, saldo atual R$${this.#balance}`)
+			console.log(`Saque realizado, saldo atual R$${this.#balance}`)
 
 		} else if (this.#balance <= amount) {
-			console.log(`Não foi possível realizar a operação. Saldo insuficiente [[[[[[[[]]]]]]]] R$${this.#balance}`)
+			console.log(`Não foi possível realizar a operação. Saldo insuficiente R$${this.#balance}`)
 		} else {
-			return
+			return 
 		}
 	}
 }
