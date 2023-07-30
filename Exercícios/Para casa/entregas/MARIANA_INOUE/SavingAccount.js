@@ -5,34 +5,31 @@ const { Bank } = require('./Bank');
 class SavingAccount extends BankAccount {
     incomeDay;
     incomeRate;
-    #balance = 0;
-    withdrawalCount = 0;
-    maxFreeWithdrawals = 2;
-    withdrawalFee
-    constructor(client, bank, accountNumber, agencyNumber, incomeDay, incomeRate, withdrawalFee) {
+    maxFreeWithdrawals = 3;
+    #qtdWithdrawal;
+    #withdrawalTax
+    #balance = 0
+    constructor(client, bank, accountNumber, agencyNumber, incomeDay, incomeRate) {
+
         super(client, bank, accountNumber, agencyNumber)
-        if (!(client instanceof Client)) {
-            return new Error('Informe um cliente válido **********');
-        }
-        if (!(bank instanceof Bank)) {
-            return new Error('Informe um banco válido [[[[[[[[[[[[');
-        }
-        if (
-            client.banks.find((element) => element.bankCode === bank.bankCode) ===
-            undefined
-        ) {
-            return new Error(
-                `Cliente do CPF ${client.cpf} não possui conta no banco =========== ${bank.bankName}`
-            );
-        }
-        this.client = client;
-        this.bank = bank;
-        this.accountNumber = accountNumber;
-        this.agencyNumber = agencyNumber;
         this.incomeDay = incomeDay;
         this.incomeRate = incomeRate;
-        this.withdrawalFee = withdrawalFee
+        this.#withdrawalTax = 0.03
+        this.#qtdWithdrawal = 0
+
     }
+
+    get qtdWithdrawal() {
+        return this.#qtdWithdrawal
+    }
+
+    get withdrawalTax() {
+        return this.#withdrawalTax
+    }
+    set withdrawalTax(newWithdrawalTax) {
+        this.#withdrawalTax = newWithdrawalTax
+    }
+
 
 
     transferTo(anotherAccount, amount) {
@@ -67,6 +64,7 @@ class SavingAccount extends BankAccount {
     }
 
     generateIncome(incomeDay) {
+        this.incomeDay
         if (this.incomeDay === incomeDay) {
             this.#balance += this.#balance * this.incomeRate
 
@@ -74,22 +72,21 @@ class SavingAccount extends BankAccount {
         }
     }
 
-
     cashWithdrawal(amount) {
-        if (this.withdrawalCount < this.maxFreeWithdrawals) {
+        console.log(`Informação, conta poupança: Até 2 saques não haverá cobrança de taxas.`)
+        if (this.#qtdWithdrawal < this.maxFreeWithdrawals) {
             super.cashWithdrawal(amount)
-        } else if (this.withdrawalCount >= this.maxFreeWithdrawals) {
-
-            this.#balance -= amount * this.withdrawalFee
-            console.log(`Saque realizado com sucesso. Adição de taxa.`)
+            console.log(`Quantidade de saques realizado: ${this.#qtdWithdrawal}`)
+            console.log(`Saque realizado de R$${amount},00, com sucesso.`)
+        } else if (this.#qtdWithdrawal >= this.maxFreeWithdrawals) {
+            let plusTax = this.#withdrawalTax * 100
+            amount = amount + plusTax 
+            console.log(`Saque de R$${amount}, realizado  com sucesso. Ocorreu adição de taxa de ${this.#withdrawalTax}, pois é o ${this.#qtdWithdrawal}° saque.`)
+            this.debitAmount(amount)
+           
         }
-
-        this.withdrawalCount++
+        this.#qtdWithdrawal++
     }
-
-
-
-
 }
 
 module.exports = { SavingAccount }

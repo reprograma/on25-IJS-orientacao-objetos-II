@@ -107,7 +107,7 @@ class BankAccount {
 	cashWithdrawal(amount) {
 		if (this.#balance >= amount) {
 			this.debitAmount(amount)
-			console.log(`Saque realizado com sucesso R$${this.#balance}`)
+			console.log(`Saque realizado com sucesso, saldo atual R$${this.#balance}`)
 
 		} else if (this.#balance <= amount) {
 			console.log(`Não foi possível realizar a operação. Saldo insuficiente [[[[[[[[]]]]]]]] R$${this.#balance}`)
