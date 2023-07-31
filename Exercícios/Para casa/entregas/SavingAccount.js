@@ -62,11 +62,7 @@ class SavingAccount extends BankAccount {
 	}
 
     generateIncome(currentDay){
-        let day = currentDay.getDate();
-
-        let dayNow = `${day}`;
-
-        if(dayNow == parseInt(this.incomeDay)){
+        if(currentDay == parseInt(this.incomeDay)){
             this.balance += this.balance * this.incomeRate;
             console.log(`Hoje é dia de rendimento! Saldo atual com o rendimento: R$ ${this.balance}`);
         } else {
