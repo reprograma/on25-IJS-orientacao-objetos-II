@@ -8,12 +8,6 @@ class BankAccount {
 	agencyNumber;
 	#balance = 0;
 
-	/* Adicionar e inicializar atributos NA CLASSE HERDEIRA SavingAccount:
-	#withdrawalTax
-	qtdWithdrawal
-	MAX_OF_WITHDRAWAL
-	*/
-
 	constructor(client, bank, accountNumber, agencyNumber) {
 		if (!(client instanceof Client)) {
 			return new Error('Informe um cliente válido');
@@ -105,7 +99,13 @@ class BankAccount {
 		}
 	}
 
-	// Criar método cashWithdrawal
+	cashWithdrawal(amount){
+		if(this.#balance < amount){
+			console.log(`Não há saldo suficiente para sacar R$ ${amount}. Saldo atual: RS ${this.#balance}`);
+		} else {
+			this.debitAmount(amount);
+		}
+	}
 }
 
 module.exports = { BankAccount };
