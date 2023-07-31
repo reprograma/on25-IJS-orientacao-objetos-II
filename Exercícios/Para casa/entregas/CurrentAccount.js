@@ -1,4 +1,4 @@
-const { BankAccount } = require('../../projeto/BankAccount');
+const { BankAccount } = require('../projeto/BankAccount');
 
 class CurrentAccount extends BankAccount {
 

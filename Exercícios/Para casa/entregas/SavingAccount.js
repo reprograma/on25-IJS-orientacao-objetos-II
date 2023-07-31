@@ -1,4 +1,4 @@
-const { BankAccount } = require('../../projeto/BankAccount')
+const { BankAccount } = require('../projeto/BankAccount')
 
 class SavingAccount extends BankAccount {
     incomeRate;

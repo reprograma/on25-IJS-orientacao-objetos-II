@@ -2,8 +2,8 @@
 const { Bank } = require('./Bank');
 const { Client } = require('./Client');
 const { BankAccount } = require('./BankAccount');
-const { CurrentAccount } = require('../entregas/thayssa-souza/CurrentAccount');
-const { SavingAccount } = require('../entregas/thayssa-souza/SavingAccount');
+const { CurrentAccount } = require('../entregas/CurrentAccount');
+const { SavingAccount } = require('../entregas/SavingAccount');
 
 // Criação de bancos
 const bank1 = new Bank(100, 'Lua Bank', 0.01);
