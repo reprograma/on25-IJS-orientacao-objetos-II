@@ -8,12 +8,6 @@ class BankAccount {
 	agencyNumber;
 	#balance = 0;
 
-	/* Adicionar e inicializar atributos NA CLASSE HERDEIRA SavingAccount:
-	#withdrawalTax
-	qtdWithdrawal
-	MAX_OF_WITHDRAWAL
-	*/
-
 	constructor(client, bank, accountNumber, agencyNumber) {
 		if (!(client instanceof Client)) {
 			return new Error('Informe um cliente válido');
