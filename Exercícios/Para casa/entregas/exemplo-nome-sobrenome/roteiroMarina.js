@@ -6,13 +6,13 @@ const { CurrentAccount } = require("../../projeto/CurrentAccount");
 const { SavingAccount } = require("../../projeto/SavingAccount");
 
 // Criação de bancos
-const bank1 = new Bank(100, 'Lua Bank', 0.01);
-const bank2 = new Bank(200, 'Code Bank', 0.02);
+const bank1 = new Bank(100, "Lua Bank", 0.01);
+const bank2 = new Bank(200, "Code Bank", 0.02);
 
 // Criação de clientes
-const client1 = new Client('Luara', 123456789);
-const client2 = new Client('Simone', 987654321);
-const client3 = new Client('Ada', 987654321);
+const client1 = new Client("Luara", 123456789);
+const client2 = new Client("Simone", 987654321);
+const client3 = new Client("Ada", 987654321);
 
 // Associando clientes a bancos
 client1.addBank(bank1); // Banco 100 adicionado à cliente Luara.
@@ -69,21 +69,20 @@ const currentAccount2 = new CurrentAccount(client2, bank2, 3333, 4444);
 //currentAccount2.transferTo(currentAccount1, 4000);
 
 const savingAccount1 = new SavingAccount(client2, bank1, 5555, 6666, 0.1, 20);
-const savingAccount2 = new SavingAccount(client3, bank2, 7777, 8888, 0.05, 5); 
+const savingAccount2 = new SavingAccount(client3, bank2, 7777, 8888, 0.05, 5);
 
 savingAccount1.creditAmount(1300);
 currentAccount1.creditAmount(5000);
 
-currentAccount1.cashWithdrawal(100); 
-currentAccount1.cashWithdrawal(500); 
-currentAccount1.cashWithdrawal(200); 
+currentAccount1.cashWithdrawal(100);
+currentAccount1.cashWithdrawal(500);
+currentAccount1.cashWithdrawal(200);
 currentAccount1.cashWithdrawal(300);
 
 savingAccount1.cashWithdrawal(100);
 savingAccount1.cashWithdrawal(500);
 savingAccount1.cashWithdrawal(200);
 savingAccount1.cashWithdrawal(300);
-
 
 savingAccount1.generateIncome(1);
 
