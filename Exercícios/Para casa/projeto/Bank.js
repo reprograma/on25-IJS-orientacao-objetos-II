@@ -2,7 +2,6 @@ class Bank {
 	bankCode;
 	bankName;
 	#trasferTax;
-	// DESAFIO: Criar atributo managers (inicializado como array vazia)
 
 	static createdBanks = [];
 
@@ -19,8 +18,6 @@ class Bank {
 	get transferTax() {
 		return this.#trasferTax;
 	}
-
-	// DESAFIO: Criar método contractManager
 }
 
 module.exports = { Bank };
