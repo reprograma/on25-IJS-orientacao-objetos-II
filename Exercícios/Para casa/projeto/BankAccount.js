@@ -100,6 +100,9 @@ class BankAccount {
 	}
 
 	// Criar método cashWithdrawal
+	cashWithdrawal(amount) {
+		// Implementar esse método
+	}
 }
 
 module.exports = { BankAccount };
