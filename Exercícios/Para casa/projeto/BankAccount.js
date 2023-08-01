@@ -103,7 +103,12 @@ class BankAccount {
 
   cashWithdrawal(amount) {
     if (this.#balance > 0) {
-      return this.#balance - amount;
+      this.#balance - amount;
+      console.log(
+        `Retirada de ${amount} efetuada. Seu saldo atual é de ${
+          this.balance - amount
+        }`
+      );
     } else {
       console.log("Não há saldo suficiente para saque");
     }
@@ -120,8 +125,8 @@ class CurrentAccount extends BankAccount {
       return;
     }
 
-    if (this.#balance >= amountToBeDebited) {
-      this.#balance -= amountToBeDebited;
+    if (this.#balance >= amount) {
+      this.#balance -= amount;
       anotherAccount.balance += amount;
 
       console.log(`O saldo atual da conta de origem é de R$ ${this.#balance}`);
