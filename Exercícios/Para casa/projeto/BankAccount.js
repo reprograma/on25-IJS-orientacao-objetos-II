@@ -115,7 +115,7 @@ class BankAccount {
   }
 }
 
-class CurrentAccount extends BankAccount {
+/* class CurrentAccount extends BankAccount {
   #balance;
 
   transferTo(anotherAccount, amount) {
@@ -159,5 +159,5 @@ class SavingAccount extends BankAccount {
       this.#balance + this.incomeRate;
     }
   }
-}
+} */
 module.exports = { BankAccount };
