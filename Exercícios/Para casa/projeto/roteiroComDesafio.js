@@ -1,9 +1,9 @@
 // Importações
+const { Manager } = require('../entregas/Manager');
 const { Bank } = require('./Bank');
 const { Client } = require('./Client');
-const { SavingAccount } = require('./SavingAccount');
-const { CurrentAccount } = require('./CurrentAccount');
-const { Manager } = require('./Manager');
+const { SavingAccount } = require('../entregas/SavingAccount');
+const { CurrentAccount } = require('../entregas/CurrentAccount');
 
 // Criação de bancos
 const bank1 = new Bank(100, 'Lua Bank', 0.01);

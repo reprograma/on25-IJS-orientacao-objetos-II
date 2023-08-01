@@ -1,77 +1,79 @@
 const { Bank } = require('./Bank');
+const { Person } = require('../entregas/Person');
 
-// DESAFIO: Herdar Client de uma classe Person
-class Client {
-	// DESAFIO: Remover atributos que foram herdados
-	name;
-	#cpf;
-	banks = [];
+class Client extends Person {
+    banks;
 
-	constructor(name, cpf) {
-		// DESAFIO: Atualizar constructor após herança
-		this.name = name;
-		this.#cpf = cpf;
-	}
+    constructor(name, cpf) {
+        super(name, cpf)
+        this.banks = [];
+    }
 
-	get cpf() {
-		return this.#cpf;
-	}
+    hasAccountInThisBank(bank) {
+        return (
+            this.banks.find((element) => element.bank.bankCode === bank.bankCode) !== 
+            undefined
+        );
+    }
 
-	hasAccountInThisBank(bank) {
-		return (
-			this.banks.find((element) => element.bankCode === bank.bankCode) !== // DESAFIO: element.bankCode agora será element.bank.bankCode
-			undefined
-		);
-	}
+    #getAnyManager(bank){
+        const managerRandom = Math.floor(Math.random() * bank.managers.length);
+        const managerChosen = bank.managers[managerRandom];
+        managerChosen.addClient(this);
 
-	// DESAFIO: Criar método getAnyManager
+        return managerChosen;
+    }
+    
 
-	addBank(bank) {
-		if (!(bank instanceof Bank)) {
-			console.log('Informe um banco válido');
-			return;
-		}
+    addBank(bank) {
+        if (!(bank instanceof Bank)) {
+            console.log('Informe um banco válido');
+            return;
+        }
 
-		if (this.hasAccountInThisBank(bank)) {
-			console.log(
-				`Cliente do CPF ${this.cpf} já possui conta no banco ${bank.bankName}`
-			);
-			return;
-		}
+        if (this.hasAccountInThisBank(bank)) {
+            console.log(
+                `Cliente do CPF ${this.cpf} já possui conta no banco ${bank.bankName}`
+            );
+            return;
+        }
 
-		// DESAFIO: Chamar método getAnyManager, salvando o retorno em uma const manager
-		this.banks.push(bank); // DESAFIO: Agora, banks será uma array de objetos, então é necessário salvar da seguinte maneira: this.banks.push({ bank: bank, manager: manager }) - para simplificar, podemos escrever assim: this.banks.push({ bank, manager })
-		const bankIndex = Bank.createdBanks.findIndex(
-			(element) => element.bankCode === bank.bankCode
-		);
-		Bank.createdBanks[bankIndex].qtdClients++;
+        const manager = this.#getAnyManager(bank);
+        this.banks.push({ 
+            bank: bank, 
+            manager: manager.name 
+        }); 
+        const bankIndex = Bank.createdBanks.findIndex(
+            (element) => element.bankCode === bank.bankCode
+        );
+        Bank.createdBanks[bankIndex].qtdClients++;
 
-		console.log(`Banco ${bank.bankCode} adicionado à cliente ${this.name}.`); // DESAFIO: Atualizar a mensagem para exibir também quem é a gerente da cliente.
-	}
+        console.log(`Banco ${bank.bankCode} adicionado à cliente ${this.name}. O gerente do banco é ${manager.name}`);
+    }
 
-	removeBank(bank) {
-		if (!(bank instanceof Bank)) {
-			console.log('Informe um banco válido');
-			return;
-		}
+    removeBank(bank) {
+        if (!(bank instanceof Bank)) {
+            console.log('Informe um banco válido');
+            return;
+        }
 
-		if (!this.hasAccountInThisBank(bank)) {
-			console.log(
-				`Cliente do CPF ${this.cpf} não possui conta no banco ${bank.bankName} para ser removida`
-			);
-			return;
-		}
+        if (!this.hasAccountInThisBank(bank)) {
+            console.log(
+                `Cliente do CPF ${this.cpf} não possui conta no banco ${bank.bankName} para ser removida`
+            );
+            return;
+        }
 
-		this.banks = this.banks.filter(
-			(element) => element.bankCode !== bank.bankCode // DESAFIO: element.bankCode agora será element.bank.bankCode
-		);
-		const bankIndex = Bank.createdBanks.findIndex(
-			(element) => element.bankCode === bank.bankCode
-		);
-		Bank.createdBanks[bankIndex].qtdClients--;
+        this.banks = this.banks.filter(
+            (element) => element.bank.bankCode !== bank.bankCode
+        );
+        const bankIndex = Bank.createdBanks.findIndex(
+            (element) => element.bankCode === bank.bankCode
+        );
+        Bank.createdBanks[bankIndex].qtdClients--;
 
-		console.log(`Banco ${bank.bankCode} removido da cliente ${this.name}`);
-	}
+        console.log(`Banco ${bank.bankCode} removido da cliente ${this.name}`);
+    }
 }
 
 module.exports = { Client };
