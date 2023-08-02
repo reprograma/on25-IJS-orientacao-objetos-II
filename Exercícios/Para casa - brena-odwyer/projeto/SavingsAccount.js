@@ -1,14 +1,31 @@
-const { BankAccount } = require("./BankAccount");
+const { BankAccount } = require("./BankAccount"); // Desconsiderar as anotações que são apenas minhas anotações em aula
 
 class SavingsAccount extends BankAccount {
-    // vai ter incomeRate
-    // incomeDay
+    client
+    bank
+    accountNumber
+    agencyNumber
+    incomeRate
+    incomeDay
     // método generateIncome(currentDay), recebe o dia atual, vê se é igual o incomeDay e mostra o novo saldo
     // cashWithdrawal vamos sobreescrever, há um limite de quantos saques a pessoa pode fazer
 
     #qtdWithdrawal = 0 // começa em zero pq a pessoa não fez nenhuma retirada ainda
     #MAX_OF_WITHDRAWAL = 2 // por padronização usamos a letra maiúscula para constantes, esse valor não vai mudar
     #withdrawalTax = 0.03
+
+    constructor(client, bank, accountNumber, agencyNumber, incomeRate, incomeDay){
+    super(client, bank, accountNumber, agencyNumber)
+        this.incomeRate = incomeRate
+        this.incomeDay = incomeDay
+    }
+
+    generateIncome(currentDay){
+        if(currentDay == this.incomeDay) {
+            this.balance += this.balance * this.incomeRate
+            console.log(`Novo saldo com redimentos é ${this.balance}`)
+        }
+    }
 
     cashWithdrawal(amount){ // sobreescrevendo o método que vem da classe mãe, BankAccount. Como vamos sobreescrever por completo não precisa do super
         console.log(`Você já realizou ${this.#qtdWithdrawal}. Você tem direito a ${this.#MAX_OF_WITHDRAWAL} gratuitas`)

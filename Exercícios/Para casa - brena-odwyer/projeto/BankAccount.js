@@ -60,7 +60,7 @@ class BankAccount {
 		}
 
 		let amountToBeDebited = amount;
-		if (this.bank.bankCode !== anotherAccount.bank.bankCode) {
+		if (this.bank && this.bank.bankCode !== anotherAccount.bank.bankCode) {
 			amountToBeDebited = amount + amount * this.bank.transferTax;
 			console.log(
 				`Essa transferência terá uma taxa de ${
@@ -107,7 +107,7 @@ class BankAccount {
 
 	cashWithdrawal(amount){
 		if(this.#balance >= amount){
-			this.#balance -= amount;
+			this.debitAmount(amount)
 			console.log(`O novo saldo da conta é: R$ ${this.#balance}`);
 		} else {
 			console.log(`Saldo insuficiente para a retirada. O saldo é ${this.#balance}`)
