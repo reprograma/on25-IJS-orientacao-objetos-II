@@ -106,6 +106,14 @@ class BankAccount {
 	}
 
 	// Criar método cashWithdrawal
+	cashWithdrawal(amount){
+		if(amount > this.#balance){
+			console.log(`Você não possui saldo suficiente para retirar dinheiro. Seu saldo é de ${this.#balance}`)
+		}
+		if(this.#balance >= amount){
+			this.debitAmount(amount)
+		}
+	}
 }
 
 module.exports = { BankAccount };
