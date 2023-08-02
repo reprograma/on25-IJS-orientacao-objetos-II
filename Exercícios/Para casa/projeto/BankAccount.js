@@ -10,12 +10,6 @@ class BankAccount {
 	#qtdWithdrawal;
     #withdrawalTax;
 
-	/* Adicionar e inicializar atributos NA CLASSE HERDEIRA SavingAccount:
-	#withdrawalTax
-	qtdWithdrawal
-	MAX_OF_WITHDRAWAL
-	*/
-
 	constructor(client, bank, accountNumber, agencyNumber) {
 		if (!(client instanceof Client)) {
 			return new Error('Informe um cliente válido');
@@ -127,6 +121,10 @@ class BankAccount {
             console.log("Ops, ocorreu algum erro")
         }
     }
+	// Criar método cashWithdrawal
+	cashWithdrawal(amount) {
+		// Implementar esse método
+	}
 }
 
 module.exports = { BankAccount };
