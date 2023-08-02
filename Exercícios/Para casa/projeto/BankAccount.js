@@ -7,6 +7,8 @@ class BankAccount {
 	accountNumber;
 	agencyNumber;
 	#balance = 0;
+	#qtdWithdrawal;
+    #withdrawalTax;
 
 	/* Adicionar e inicializar atributos NA CLASSE HERDEIRA SavingAccount:
 	#withdrawalTax
@@ -105,7 +107,26 @@ class BankAccount {
 		}
 	}
 
-	// Criar método cashWithdrawal
+	cashWithdrawal(amount) {
+        if (this.#qtdWithdrawal >= 2 && amount <= this.#balance) {
+            this.#balance -= amount;
+            this.#qtdWithdrawal += 1;
+            return console.log(`As primeiras 2 retiradas são gratuitas. Foi cobrado uma taxa de ${this.#withdrawalTax}, sacou o valor de ${amount - this.#withdrawalTax}, o saldo atual é de R$${this.#balance}. Você realizou ${this.#qtdWithdrawal} saque(s). Você não possui mais nenhuma retirada gratuita.`)
+        }
+        if (this.#qtdWithdrawal == 1 && amount <= this.#balance) {
+            this.#balance -= amount;
+            this.#qtdWithdrawal += 1;
+            return console.log(`As primeiras 2 retiradas são gratuitas. Retirada realizada com sucesso. O saldo atual é de R$${this.#balance}. Total de retiradas realizadas: ${this.#qtdWithdrawal}.  Você não possui mais nenhuma retirada gratuita.`)
+        } if (this.#qtdWithdrawal == 0 && amount <= this.#balance) {
+            this.#balance -= amount;
+            this.#qtdWithdrawal += 1;
+            return console.log(`As primeiras 2 retiradas são gratuitas. Retirada realizada com sucesso. O saldo atual é de R$${this.#balance}. Total de retiradas realizadas: ${this.#qtdWithdrawal}. Você ainda possui 1 retirada gratuita`);
+        } if (amount > this.#balance) {
+            return console.log(`Você não possui saldo o suficiente`)
+        } else {
+            console.log("Ops, ocorreu algum erro")
+        }
+    }
 }
 
 module.exports = { BankAccount };

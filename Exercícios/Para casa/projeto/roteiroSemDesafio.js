@@ -62,7 +62,7 @@ const currentAccount2 = new CurrentAccount(client2, bank2, 3333, 4444);
 // Utilizando os métodos de Conta Corrente
 currentAccount1.creditAmount(5000); // O novo saldo da conta após o crédito é: R$ 5000,00
 currentAccount2.creditAmount(2000); // O novo saldo da conta após o crédito é: R$ 2000,00
-
+console.log(currentAccount1.balance)
 // Transferência entre bancos diferentes
 currentAccount1.transferTo(currentAccount2, 1500);
 currentAccount2.transferTo(currentAccount1, 5000);
@@ -86,7 +86,7 @@ currentAccount1.cashWithdrawal(300); // Retirada realizada. O saldo atual da con
 /** CONTA POUPANÇA */
 // Criação de conta poupança
 const savingAccount1 = new SavingAccount(client2, bank1, 5555, 6666, 0.1, 20);
-const savingAccount2 = new SavingAccount(client3, bank2, 7777, 8888, 0.05, 5); 
+const savingAccount2 = new SavingAccount(client3, bank2, 7777, 8888, 0.05, 5);
 
 // Utilizando os métodos de Conta Poupança
 savingAccount1.creditAmount(1300); // O novo saldo da conta após o crédito é: R$ 1300,00
