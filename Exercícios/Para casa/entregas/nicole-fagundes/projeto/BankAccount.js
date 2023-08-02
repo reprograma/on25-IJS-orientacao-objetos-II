@@ -114,8 +114,6 @@ class BankAccount {
 			);
 		}
 	}
-
-	// Criar método cashWithdrawal
 }
 
 module.exports = { BankAccount };

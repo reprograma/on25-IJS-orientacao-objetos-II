@@ -28,23 +28,26 @@ class SavingAccount extends BankAccount{
     cashWithdrawal(amount){
         console.log(`Você já realizou ${this.#qtdWithdrawal} retiradas. Você tem direito a mais ${this.#MAX_OF_WITHDRAWAL} retirada(s) `)
 
-        //tentar tirar a repetição do código
+        const incrementQtdWithdrawal = this.#qtdWithdrawal++;
+        const infoBalanceMessage = console.log(`Retirada realizada com sucesso! Seu saldo restante é R$ ${this.balance},00`)
+        const notEnoughBalanceMessage = console.log("Você não tem saldo suficiente para essa opção ):")
+
         if(this.#qtdWithdrawal < this.#MAX_OF_WITHDRAWAL){
             if(this.balance >= amount){
                 this.balance -= amount;
-                this.#qtdWithdrawal++; //incrementar a quantidade de retiradas que a pessoa já fez
-                console.log(`Retirada realizada com sucesso! Seu saldo restante é R$ ${this.balance},00`)
+                incrementQtdWithdrawal;
+                infoBalanceMessage
             } else {
-                console.log("Você não tem saldo suficiente para essa opção ):")
+                notEnoughBalanceMessage;
             }
         } else {
             const amountWithTax = amount + (amount * this.#withdrawalTax);
             if(this.balance >= amountWithTax){
                 this.balance -= amountWithTax;
-                this.#qtdWithdrawal++;
-                console.log(`Retirada realizada com sucesso! Seu saldo restante é R$ ${this.balance},00`)
+                incrementQtdWithdrawal;
+                infoBalanceMessage
             } else {
-                console.log("Você não tem saldo suficiente para essa opção ):")
+                notEnoughBalanceMessage;
             }
         }
 
@@ -56,8 +59,6 @@ class SavingAccount extends BankAccount{
             this.balance += (this.balance * this.incomeRate)
             console.log(`Seu novo saldo após rendimentos é de R$ ${this.balance}`)
         }
-        //se o dia atual for igual ao dia do rendimento, o saldo deve ser atualizado com o valor do rendimento somado
-        //retornar o saldo
     }
 
 }
