@@ -1,15 +1,17 @@
 class Bank {
 	bankCode;
 	bankName;
-	#trasferTax;
+	#transferTax;
+	managers
 	// DESAFIO: Criar atributo managers (inicializado como array vazia)
 
 	static createdBanks = [];
 
-	constructor(bankCode, bankName, transferTax) {
+	constructor(bankCode, bankName, transferTax, managers) {
 		this.bankCode = bankCode;
 		this.bankName = bankName;
-		this.#trasferTax = transferTax;
+		this.#transferTax = transferTax;
+		this.managers = []
 		this.constructor.createdBanks.push({
 			bankCode: this.bankCode,
 			qtdClients: 0,
@@ -17,10 +19,8 @@ class Bank {
 	}
 
 	get transferTax() {
-		return this.#trasferTax;
+		return this.#transferTax;
 	}
-
-	// DESAFIO: Criar método contractManager
 }
 
 module.exports = { Bank };

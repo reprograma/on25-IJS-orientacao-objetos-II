@@ -86,6 +86,16 @@ class BankAccount {
 		}
 	}
 
+	cashWithdrawal(amount) {
+		if(this.#balance < amount) {
+			console.log("Saldo insuficiente para realizar esta operação!")
+			return
+		} else {
+			this.#balance = this.#balance - amount
+			console.log(`Retirada no valor de ${amount} realizada com sucesso!`)
+		}
+	}
+
 	closeAccount() {
 		if (this.#balance === 0) {
 			console.log(
@@ -105,7 +115,7 @@ class BankAccount {
 		}
 	}
 
-	// Criar método cashWithdrawal
+
 }
 
 module.exports = { BankAccount };
