@@ -1,7 +1,7 @@
 // Importações
 const { Bank } = require('./Bank');
 const { Client } = require('./Client');
-const { SavingAccount } = require('./SavingAccount');
+const { SavingAccount } = require('./SavingsAccount');
 const { CurrentAccount } = require('./CurrentAccount');
 
 // Criação de bancos
