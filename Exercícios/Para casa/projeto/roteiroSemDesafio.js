@@ -94,7 +94,7 @@ savingAccount1.debitAmount(300); // O novo saldo da conta após o débito é: R$
 savingAccount1.generateIncome(20); // Seu novo saldo após rendimentos é de R$ 1100,00
 
 // Transferência entre bancos diferentes
-//savingAccount1.transferTo(savingAccount2, 100);
+savingAccount1.transferTo(savingAccount2, 100);
 
 // Retirada em banco 24 horas
 savingAccount2.creditAmount(1000); // O novo saldo da conta após o crédito é: R$ 1000,00
