@@ -61,22 +61,22 @@ Dessa maneira, as alterações que você precisará fazer são:
 
 ### BankAccount
 Criar o método
-- [ ] `cashWithdrawal(amount)`: realiza retiradas de dinheiro em bancos 24 horas.
+- [x] `cashWithdrawal(amount)`: realiza retiradas de dinheiro em bancos 24 horas.
   - Caso haja saldo suficiente, debitar o valor do saldo.
   - Caso não haja saldo suficiente para a operação, retornar uma mensagem para o usuário.
   - Imprima na console o resultado.
 
 ### CurrentAccount
 Deve herdar a classe `BankAccount`.
-- [ ] Sobrescrever o método `transferTo(anotherAccount, amount)`.
+- [x] Sobrescrever o método `transferTo(anotherAccount, amount)`.
   - A transferência será feita sem nenhum tipo de taxa, independente do tipo de conta ou do banco.
   - Mantenha as verificações de conta bancária e saldo suficiente.
 
 ### SavingAccount
 Deve herdar a classe `BankAccount`.
 Deve possuir os seguintes atributos a mais:
-- [ ] `incomeRate`, taxa de rendimento, recebido na instanciação
-- [ ] `incomeDay`, dia de rendimento, recebido na instanciação
+- [x] `incomeRate`, taxa de rendimento, recebido na instanciação
+- [x] `incomeDay`, dia de rendimento, recebido na instanciação
 
 Por fim, a classe `SavingAccount` deve possuir o seguinte método:
 - [ ] `generateIncome(currentDay)`, que recebe como o atributo o dia atual e, caso o dia atual seja igual ao dia de rendimento (`incomeDay`), deve atualizar o saldo, somando o valor rendido. Retorne o novo saldo na console.
