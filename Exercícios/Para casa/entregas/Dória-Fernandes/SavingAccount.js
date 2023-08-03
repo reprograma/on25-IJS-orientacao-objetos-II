@@ -3,7 +3,6 @@ const { Client } = require('./Client');
 const { BankAccount } = require('./BankAccount');
 
 class SavingAccount extends BankAccount {
-  #balance = 0;
   incomeRate;
   incomeDay;
   #qtdWithdrawal = 0;
@@ -29,14 +28,15 @@ class SavingAccount extends BankAccount {
   }
 
   cashWithdrawal(amount) {
+    console.log(`Você já realizou ${this.#qtdWithdrawal} retiradas.`)
     if (this.#qtdWithdrawal >= this.#MAX_OF_WITHDRAWAL) {
-      if (amount <= this.#balance) {
-        this.#balance -= amount;
+      if (amount <= this.balance) {
+        this.balance -= amount;
         this.#qtdWithdrawal ++;
         console.log(`As primeiras 2 retiradas são gratuitas. `)
-        console.log(`Foi cobrado uma taxa de ${this.#withdrawalTax} `)
+        console.log(`Foi cobrado uma taxa de R$${this.#withdrawalTax},00 `)
         console.log(`Sacou o valor de ${amount - this.#withdrawalTax} `)
-        console.log(`O saldo atual é de R$${this.#balance}. `)
+        console.log(`O saldo atual é de R$${this.balance}. `)
         console.log(`Você realizou ${this.#qtdWithdrawal} saque(s). `)
         console.log(`Você não possui mais nenhuma retirada gratuita. `)
         return;
@@ -45,12 +45,12 @@ class SavingAccount extends BankAccount {
       }
     }
     if (this.#qtdWithdrawal == 1) {
-      if (amount <= this.#balance) {
-        this.#balance -= amount;
+      if (amount <= this.balance) {
+        this.balance -= amount;
         this.#qtdWithdrawal += 1;
         console.log(`As primeiras 2 retiradas são gratuitas. `)
         console.log(`Sacou o valor de ${amount} `)
-        console.log(`O saldo atual é de R$${this.#balance}. `)
+        console.log(`O saldo atual é de R$${this.balance}. `)
         console.log(`Você realizou ${this.#qtdWithdrawal} saque(s). `)
         console.log(`Você não possui mais nenhuma retirada gratuita. `)
         return;
@@ -58,12 +58,12 @@ class SavingAccount extends BankAccount {
         console.log(`Você não possui saldo o suficiente`)
       }
     } if (this.#qtdWithdrawal == 0) {
-      if (amount <= this.#balance) {
-        this.#balance -= amount;
+      if (amount <= this.balance) {
+        this.balance -= amount;
         this.#qtdWithdrawal += 1;
         console.log(`As primeiras 2 retiradas são gratuitas. `)
         console.log(`Sacou o valor de ${amount} `)
-        console.log(`O saldo atual é de R$${this.#balance}. `)
+        console.log(`O saldo atual é de R$${this.balance}. `)
         console.log(`Você realizou ${this.#qtdWithdrawal} saque(s). `)
         console.log(`Você ainda possui 1 retirada gratuita. `)
         return;
@@ -77,9 +77,11 @@ class SavingAccount extends BankAccount {
 
   generateIncome(currentDay) {
     if (currentDay == this.incomeDay) {
-      this.#balance += this.#balance * this.incomeRate;
-      console.log(`Seu novo saldo é ${this.#balance}`)
+      this.balance += this.balance * this.incomeRate;
+      console.log(`Seu novo saldo é ${this.balance},00`)
       return;
+    } else {
+      console.log('Income deu erro')
     }
   }
 

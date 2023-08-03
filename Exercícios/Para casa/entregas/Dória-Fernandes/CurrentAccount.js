@@ -9,7 +9,7 @@ class CurrentAccount extends BankAccount {
 
     transferTo(anotherAccount, amount) {
         super.transferTo();
-        if (!(anotherAccount instanceof CurrentAccount)) {
+        if (!(anotherAccount instanceof BankAccount)) {
             console.log('Informe uma conta válida!');
             return;
         } else {
