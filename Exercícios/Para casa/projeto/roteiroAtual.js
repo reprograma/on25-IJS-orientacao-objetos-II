@@ -1,4 +1,3 @@
-// Importações
 const { Bank } = require("./Bank");
 const { Client } = require("./Client");
 const { BankAccount } = require("./BankAccount");
@@ -7,10 +6,7 @@ const { SavingAccount } = require("../entregas/SavingAccount");
 
 // Criação de bancos
 const bank1 = new Bank(100, "Lua Bank", 0.01);
-const bank2 = new Bank(200, "Code Bank", 0.02);
 
-// Criação de clientes
-const client1 = new Client("Luara", 123456789);
 const client2 = new Client("Simone", 987654321);
 const client3 = new Client("Ada", 987654321);
 

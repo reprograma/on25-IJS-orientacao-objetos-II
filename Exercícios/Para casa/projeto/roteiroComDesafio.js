@@ -1,25 +1,25 @@
 // Importações
-const { Bank } = require('./Bank');
-const { Client } = require('./Client');
-const { SavingAccount } = require('./SavingAccount');
-const { CurrentAccount } = require('./CurrentAccount');
-const { Manager } = require('./Manager');
+const { Bank } = require("./Bank");
+const { Client } = require("./Client");
+const { SavingAccount } = require("./SavingAccount");
+const { CurrentAccount } = require("./CurrentAccount");
+const { Manager } = require("./Manager");
 
 // Criação de bancos
-const bank1 = new Bank(100, 'Lua Bank', 0.01);
-const bank2 = new Bank(200, 'Code Bank', 0.02);
+const bank1 = new Bank(100, "Lua Bank", 0.01);
+const bank2 = new Bank(200, "Code Bank", 0.02);
 
 // Criação de clientes
-const client1 = new Client('Luara', 123456789);
-const client2 = new Client('Simone', 987654321);
-const client3 = new Client('Ada', 987654321);
+const client1 = new Client("Luara", 123456789);
+const client2 = new Client("Simone", 987654321);
+const client3 = new Client("Ada", 987654321);
 
 // Criação de gerentes
-const manager1 = new Manager('Maria', 123456789, 5000);
-const manager2 = new Manager('Sandra', 987654321, 7000);
-const manager3 = new Manager('Bianca', 987654321, 6500);
-const manager4 = new Manager('Josefa', 987654321, 12000);
-const manager5 = new Manager('Nina', 987654321, 9500);
+const manager1 = new Manager("Maria", 123456789, 5000);
+const manager2 = new Manager("Sandra", 987654321, 7000);
+const manager3 = new Manager("Bianca", 987654321, 6500);
+const manager4 = new Manager("Josefa", 987654321, 12000);
+const manager5 = new Manager("Nina", 987654321, 9500);
 
 // Contratando gerentes
 bank1.contractManager(manager1); // Gerente Maria contratada no banco Lua Bank.
@@ -29,7 +29,7 @@ bank2.contractManager(manager3); // Gerente Bianca contratada no banco Code Bank
 bank2.contractManager(manager4); // Gerente Josefa contratada no banco Code Bank.
 bank2.contractManager(manager5); // Gerente Nina contratada no banco Code Bank.
 
-bank2.contractManager('Gerente que não existe'); // Informe um gerente válido.
+bank2.contractManager("Gerente que não existe"); // Informe um gerente válido.
 
 // Associando clientes a bancos
 client1.addBank(bank1); // Banco 100 adicionado à cliente Luara. Sua gerente é Sandra.
@@ -124,7 +124,7 @@ currentAccount1.cashWithdrawal(300); // Retirada realizada. O saldo atual da con
 
 // Criação de conta poupança
 const savingAccount1 = new SavingAccount(client2, bank1, 5555, 6666, 0.1, 20);
-const savingAccount2 = new SavingAccount(client3, bank2, 7777, 8888, 0.05, 5); 
+const savingAccount2 = new SavingAccount(client3, bank2, 7777, 8888, 0.05, 5);
 
 // Utilizando os métodos de Conta Poupança
 savingAccount1.creditAmount(1300); // O novo saldo da conta após o crédito é: R$ 1300,00

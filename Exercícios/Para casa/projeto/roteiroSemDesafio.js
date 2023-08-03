@@ -1,17 +1,17 @@
 // Importações
-const { Bank } = require('./Bank');
-const { Client } = require('./Client');
-const { SavingAccount } = require('./SavingAccount');
-const { CurrentAccount } = require('./CurrentAccount');
+const { Bank } = require("./Bank");
+const { Client } = require("./Client");
+const { SavingAccount } = require("./SavingAccount");
+const { CurrentAccount } = require("./CurrentAccount");
 
 // Criação de bancos
-const bank1 = new Bank(100, 'Lua Bank', 0.01);
-const bank2 = new Bank(200, 'Code Bank', 0.02);
+const bank1 = new Bank(100, "Lua Bank", 0.01);
+const bank2 = new Bank(200, "Code Bank", 0.02);
 
 // Criação de clientes
-const client1 = new Client('Luara', 123456789);
-const client2 = new Client('Simone', 987654321);
-const client3 = new Client('Ada', 987654321);
+const client1 = new Client("Luara", 123456789);
+const client2 = new Client("Simone", 987654321);
+const client3 = new Client("Ada", 987654321);
 
 // Associando clientes a bancos
 client1.addBank(bank1); // Banco 100 adicionado à cliente Luara.
@@ -86,7 +86,7 @@ currentAccount1.cashWithdrawal(300); // Retirada realizada. O saldo atual da con
 /** CONTA POUPANÇA */
 // Criação de conta poupança
 const savingAccount1 = new SavingAccount(client2, bank1, 5555, 6666, 0.1, 20);
-const savingAccount2 = new SavingAccount(client3, bank2, 7777, 8888, 0.05, 5); 
+const savingAccount2 = new SavingAccount(client3, bank2, 7777, 8888, 0.05, 5);
 
 // Utilizando os métodos de Conta Poupança
 savingAccount1.creditAmount(1300); // O novo saldo da conta após o crédito é: R$ 1300,00
