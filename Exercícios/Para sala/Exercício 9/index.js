@@ -83,7 +83,6 @@ class AssistenteAdministrativo extends Assistente {
         console.log(`O turno é: ${this.turno}`)
 
         if (this.turno == 'noite') {
-
             console.log(`Adicional noturno de R$ ${this.adicionalNoturno}`)
         }
     }

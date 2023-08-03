@@ -64,7 +64,7 @@ class BankAccount {
 			amountToBeDebited = amount + amount * this.bank.transferTax;
 			console.log(
 				`Essa transferência terá uma taxa de ${
-					this.bank.transferTax * 100
+				this.bank.transferTax * 100
 				}%, pois se trata de uma transferência entre bancos diferentes.`
 			);
 		}
@@ -80,7 +80,7 @@ class BankAccount {
 		} else {
 			console.log(
 				`Saldo insuficiente para realizar a transferência. Seu saldo atual é de ${
-					this.#balance
+				this.#balance
 				}. Para realizar essa transferência você precisa ter ${amountToBeDebited} em conta.`
 			);
 		}
@@ -99,13 +99,21 @@ class BankAccount {
 		} else {
 			console.log(
 				`Você possui um saldo de R$ ${
-					this.#balance
+				this.#balance
 				}. Para encerrar a conta é necessário que o saldo seja igual a zero.`
 			);
 		}
 	}
 
 	// Criar método cashWithdrawal
+	cashWithdrawal(amount) {
+		if (this.#balance < amount) {
+			console.log(`Saldo insulficiente!`)
+		} else {
+			this.debitAmount(amount)
+			return `Saque no valor de R$ ${amount} realizado com sucesso!`
+		}
+	}
 }
 
 module.exports = { BankAccount };

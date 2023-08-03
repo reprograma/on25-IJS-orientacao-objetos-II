@@ -74,4 +74,6 @@ class Client {
 	}
 }
 
+const cliente1 = new Client ('Carol', 12345)
+
 module.exports = { Client };
