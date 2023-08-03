@@ -98,7 +98,7 @@ class BankAccount {
 	}
 
 	cashWithdrawal(amount){
-		if(this.#balance != 0) {
+		if(this.#balance >= amount) {
 			this.debitAmount(amount)
 			console.log(`Retirada realizada. O saldo atual da conta é de R$ ${this.#balance},00.`)
 		} else {
