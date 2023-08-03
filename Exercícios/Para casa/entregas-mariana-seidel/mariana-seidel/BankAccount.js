@@ -39,12 +39,12 @@ class BankAccount {
 
 	creditAmount(amount) {
 		this.#balance += amount;
-		console.log(`O novo saldo da conta é: R$ ${this.#balance}`);
+		console.log(`O novo saldo da conta é: R$ ${this.#balance},00.`);
 	}
 
 	debitAmount(amount) {
 		this.#balance -= amount;
-		console.log(`O novo saldo da conta é: R$ ${this.#balance}`);
+		console.log(`O novo saldo da conta é: R$ ${this.#balance},00.`);
 	}
 
 	transferTo(anotherAccount, amount) {
@@ -67,15 +67,13 @@ class BankAccount {
 			this.#balance -= amountToBeDebited;
 			anotherAccount.balance += amount;
 
-			console.log(`O saldo atual da conta de origem é de R$ ${this.#balance}`);
+			console.log(`O saldo atual da conta de origem é de R$ ${this.#balance},00.`);
 			console.log(
-				`O saldo atual da conta de destino é de R$ ${anotherAccount.balance}`
+				`O saldo atual da conta de destino é de R$ ${anotherAccount.balance},00.`
 			);
 		} else {
 			console.log(
-				`Saldo insuficiente para realizar a transferência. Seu saldo atual é de ${
-					this.#balance
-				}. Para realizar essa transferência você precisa ter ${amountToBeDebited} em conta.`
+				`Saldo insuficiente para realizar a transferência. Seu saldo atual é de ${this.#balance},00. Para realizar essa transferência você precisa ter ${amountToBeDebited} em conta.`
 			);
 		}
 	}
@@ -94,14 +92,18 @@ class BankAccount {
 			console.log(
 				`Você possui um saldo de R$ ${
 					this.#balance
-				}. Para encerrar a conta é necessário que o saldo seja igual a zero.`
+				},00. Para encerrar a conta é necessário que o saldo seja igual a zero.`
 			);
 		}
 	}
 
-	// Criar método cashWithdrawal
-	cashWithdrawal(amount) {
-		// Implementar esse método
+	cashWithdrawal(amount){
+		if(this.#balance >= amount) {
+			this.debitAmount(amount)
+			console.log(`Retirada realizada. O saldo atual da conta é de R$ ${this.#balance},00.`)
+		} else {
+			console.log(`Você não possui saldo suficiente para realizar esta operação`)
+		}
 	}
 }
 
