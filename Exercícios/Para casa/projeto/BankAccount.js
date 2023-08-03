@@ -99,9 +99,13 @@ class BankAccount {
 		}
 	}
 
-	// Criar método cashWithdrawal
 	cashWithdrawal(amount) {
-		// Implementar esse método
+		if (this.#balance >= amount){
+			this.#balance += amount
+			console.log(`Retirada realizada com sucesso. O novo saldo da conta é: R$ ${this.#balance},00.`)
+		} else {
+			console.log(`Você não tem saldo suficiente para essa operação;`);
+		}
 	}
 }
 
