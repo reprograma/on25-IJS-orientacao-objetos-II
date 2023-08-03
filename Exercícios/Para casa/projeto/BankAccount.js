@@ -102,7 +102,7 @@ class BankAccount {
 	// Criar método cashWithdrawal
 	cashWithdrawal(amount) {
 		if (this.#balance < amount) {
-		  console.log(`Saldo suficiente. Seu saldo atual é: RS ${this.#balance}`);
+		  console.log(`Saldo insuficiente. Seu saldo atual é: RS ${this.#balance}`);
 		} else {
 		  this.debitAmount(amount);
 		}
