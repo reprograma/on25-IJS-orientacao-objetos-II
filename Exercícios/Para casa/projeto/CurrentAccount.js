@@ -20,9 +20,7 @@ class CurrentAccount extends BankAccount {
       );
     } else {
       console.log(
-        `Saldo insuficiente para realizar a transferência. Seu saldo atual é de ${
-          this.#balance
-        }. Para realizar essa transferência você precisa ter ${amount} em conta.`
+        `Saldo insuficiente para realizar a transferência. Seu saldo atual é de ${this.balance}. Para realizar essa transferência você precisa ter ${amount} em conta.`
       );
     }
   }

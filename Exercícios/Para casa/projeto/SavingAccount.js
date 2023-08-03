@@ -20,7 +20,7 @@ class SavingAccount extends BankAccount {
         console.log(`Você não tem saldo suficiente para essa operação.`);
       }
     } else {
-      const amountWithTax = amount + amount * this.#whithdrawalTax;
+      const amountWithTax = amount + amount * this.whithdrawalTax;
       if (this.balance >= amountWithTax) {
         this.balance -= amountWithTax;
         this.#qtdWithdrawal++;
