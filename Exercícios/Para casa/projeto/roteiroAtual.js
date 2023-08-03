@@ -2,6 +2,8 @@
 const { Bank } = require('./Bank');
 const { Client } = require('./Client');
 const { BankAccount } = require('./BankAccount');
+const { SavingAccount } = require ('../Michele_Feitosa/SavingAccount');
+const { CurrentAccount } = require ('../Michele_Feitosa/CurrentAccount');
 
 // Criação de bancos
 const bank1 = new Bank(100, 'Lua Bank', 0.01);
@@ -76,3 +78,4 @@ bankAccount2.transferTo(bankAccount1, 5000);
   Saldo insuficiente para realizar a transferência. Seu saldo atual é de 3500.
   Para realizar essa transferência você precisa ter 5100 em conta.
 */
+

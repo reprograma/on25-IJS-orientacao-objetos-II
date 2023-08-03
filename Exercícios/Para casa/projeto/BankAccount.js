@@ -78,6 +78,8 @@ class BankAccount {
 				}. Para realizar essa transferência você precisa ter ${amountToBeDebited} em conta.`
 			);
 		}
+
+		
 	}
 
 	closeAccount() {
@@ -99,7 +101,15 @@ class BankAccount {
 		}
 	}
 
-	// Criar método cashWithdrawal
-}
+	cashWithdrawal(amount) {
+		if (this.#balance >= amount) {
+		  this.#balance -= amount;
+		  console.log(`Você sacou R$ ${amount}. O novo saldo da conta é: R$ ${this.#balance}`);
+		} else {
+		  console.log(`Saldo insuficiente para realizar o saque. Seu saldo atual é de R$ ${this.#balance}.`);
+		}
+	  }
+	}
+
 
 module.exports = { BankAccount };

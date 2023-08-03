@@ -61,7 +61,7 @@ Dessa maneira, as alterações que você precisará fazer são:
 
 ### BankAccount
 Criar o método
-- [ ] `cashWithdrawal(amount)`: realiza retiradas de dinheiro em bancos 24 horas.
+- [ok] `cashWithdrawal(amount)`: realiza retiradas de dinheiro em bancos 24 horas.
   - Caso haja saldo suficiente, debitar o valor do saldo.
   - Caso não haja saldo suficiente para a operação, retornar uma mensagem para o usuário.
   - Imprima na console o resultado.
