@@ -8,6 +8,12 @@ class BankAccount {
 	agencyNumber;
 	#balance = 0;
 
+	/* Adicionar e inicializar atributos NA CLASSE HERDEIRA SavingAccount:
+	#withdrawalTax
+	qtdWithdrawal
+	MAX_OF_WITHDRAWAL
+	*/
+
 	constructor(client, bank, accountNumber, agencyNumber) {
 		if (!(client instanceof Client)) {
 			return new Error('Informe um cliente válido');
@@ -101,7 +107,12 @@ class BankAccount {
 
 	// Criar método cashWithdrawal
 	cashWithdrawal(amount) {
-		// Implementar esse método
+		if(this.balance < amount) {
+			console.log(`Saldo insuficiente para retirada!`);
+		} else if(this.balance >= amount) {
+			this.balance -= amount;
+			console.log(`Retirada realizada. O saldo atual da conta é de R$ ${this.balance}`);
+		}
 	}
 }
 
