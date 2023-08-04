@@ -31,9 +31,13 @@ class SavingAccount extends BankAccount{
 
     generateIncome(currentDay){
         if(currentDay === this.incomeDay){
-            this.balance += this.balance * this.incomeRate
-            console.log(`Seu novo saldo após rendimentos é de R$ ${this.balance},00
+            let income = this.balance * this.incomeRate
+            this.creditAmount(income)
+            console.log(`O valor do rendimento foi de R$ ${income}. 
+            \n Seu novo saldo após rendimentos é de R$ ${this.balance},00
             `)
+        }else{
+            console.log('Hoje não é dia de rendimento')
         }
     }
     
