@@ -101,7 +101,12 @@ class BankAccount {
 
 	// Criar método cashWithdrawal
 	cashWithdrawal(amount) {
-		// Implementar esse método
+		if (amount <= this.#balance) {
+			this.balance -= amount
+			console.log(`Saque de ${amount} realizado com sucesso. Seu saldo restante: ${this.#balance}`);
+		} else {
+			console.log(`Saldo insuficiente para o saque de ${amount}. Salto atual: ${this.#balance}`)
+		}
 	}
 }
 
