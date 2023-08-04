@@ -54,6 +54,7 @@ class BankAccount {
 		}
 
 		let amountToBeDebited = amount;
+
 		if (this.bank.bankCode !== anotherAccount.bank.bankCode) {
 			amountToBeDebited = amount + amount * this.bank.transferTax;
 			console.log(

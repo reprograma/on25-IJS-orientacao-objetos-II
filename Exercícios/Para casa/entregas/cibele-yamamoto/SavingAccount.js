@@ -1,4 +1,4 @@
-const { BankAccount } = require('./BankAccount');
+const { BankAccount } = require('../../projeto/BankAccount');
 
 class SavingAccount extends BankAccount {
   incomeRate;
@@ -7,10 +7,16 @@ class SavingAccount extends BankAccount {
   #MAX_OF_WITHDRAWAL = 2;
   #withdrawalTax = 0.03;
 
+  constructor(client, bank, accountNumber, agencyNumber, incomeRate, incomeDay) {
+		super(client, bank, accountNumber, agencyNumber)
+    this.incomeRate = incomeRate;
+    this.incomeDay = incomeDay;
+	}
+
 	generateIncome(currentDay) {
 		if (this.incomeDay == currentDay) {
-			super.#balance += this.incomeRate;
-			console.log("O novo saldo é de " + this.#balance) 
+			super.balance = super.balance + super.balance*this.incomeRate;
+			console.log("O novo saldo é de " + super.balance) 
 		}
 	}
 
