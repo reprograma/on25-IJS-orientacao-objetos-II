@@ -42,9 +42,16 @@ contaCorrente.cashWithdrawal(50) //O novo saldo é de 1950
 
 console.log("== contaPoupanca ==")
 // Tentar retirar quantia maior que saldo
-contaPoupanca.cashWithdrawal(2500) //Saldo insuficiente!
+contaPoupanca.cashWithdrawal(2500)
+// Você já realizou 0 retiradas. Você tem direito a 2 retiradas gratuitas.
+//Você não tem saldo suficiente para essa operação;
+//Você já realizou 0 retiradas.
+
 // Retirar quantia menor que saldo
-contaPoupanca.cashWithdrawal(50) //O novo saldo é de 1950
+contaPoupanca.cashWithdrawal(50) 
+//Você já realizou 0 retiradas. Você tem direito a 2 retiradas gratuitas.
+//Retirada realizada com sucesso. Seu saldo restante é R$ 1950,00
+//Você já realizou 1 retiradas.
 console.log("==================")
 
 console.log("== transferência contaBanco => contaCorrente ==")
