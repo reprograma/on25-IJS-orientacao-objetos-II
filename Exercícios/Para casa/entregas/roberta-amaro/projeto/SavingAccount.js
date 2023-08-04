@@ -14,7 +14,7 @@ class SavingAccount extends BankAccount {
         this.balance -= amount;
         this.#qtdWithdrawal++;
         console.log(
-          `Retirada realizada com sucesso. Seu saldo restamte é R$ ${this.balance},00`
+          `Retirada realizada com sucesso. Seu saldo restante é R$ ${this.balance},00`
         );
       } else {
         console.log(`Você não tem saldo suficiente para essa operação.`);
@@ -25,7 +25,7 @@ class SavingAccount extends BankAccount {
         this.balance -= amountWithTax;
         this.#qtdWithdrawal++;
         console.log(
-          `Retirada realizada com sucesso. Seu saldo restante pé de R$ ${this.balance},00`
+          `Retirada realizada com sucesso. Seu saldo restante é de R$ ${this.balance},00`
         );
       } else {
         console.log(`Você não tem saldo suficente para esta operação`);
@@ -54,14 +54,6 @@ class SavingAccount extends BankAccount {
       console.log(`O novo saldo após rendimento é: R$ ${this.balance}`);
     }
   }
-
-  get qtdWithdrawal() {
-    return this.#qtdWithdrawal;
-  }
-
-  MAX_OF_WITHDRAWAL() {}
-
-  withdrawalTax() {}
 }
 
 module.exports = { SavingAccount };
