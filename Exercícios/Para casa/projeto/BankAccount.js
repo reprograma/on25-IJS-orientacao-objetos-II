@@ -53,15 +53,7 @@ class BankAccount {
 			return;
 		}
 
-		let amountToBeDebited = amount;
-		if (this.bank.bankCode !== anotherAccount.bank.bankCode) {
-			amountToBeDebited = amount + amount * this.bank.transferTax;
-			console.log(
-				`Essa transferência terá uma taxa de ${
-					this.bank.transferTax * 100
-				}%, pois se trata de uma transferência entre bancos diferentes.`
-			);
-		}
+		let amountToBeDebited = amount;		
 
 		if (this.#balance >= amountToBeDebited) {
 			this.#balance -= amountToBeDebited;
@@ -99,9 +91,14 @@ class BankAccount {
 		}
 	}
 
-	// Criar método cashWithdrawal
+	
 	cashWithdrawal(amount) {
-		// Implementar esse método
+		if (this.#balance >= amount) {
+			this.#balance -= amount;
+			console.log(`O saldo atual da conta é de R$ ${this.#balance}`);
+		} else {
+			console.log(`Saldo insuficiente. Seu saldo atual é de ${this.#balance}`);
+		}
 	}
 }
 
