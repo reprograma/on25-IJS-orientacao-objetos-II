@@ -1,0 +1,22 @@
+{
+  "name": "on25-ijs-orientacao-objetos-ii",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allanina/on25-IJS-orientacao-objetos-II.git"
+  },
+  "author": "allanina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allanina/on25-IJS-orientacao-objetos-II/issues"
+  },
+  "homepage": "https://github.com/allanina/on25-IJS-orientacao-objetos-II#readme",
+  "devDependencies": {
+    "jest": "^29.6.2"
+  }
+}
