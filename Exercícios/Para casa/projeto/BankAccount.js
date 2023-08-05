@@ -99,10 +99,15 @@ class BankAccount {
 		}
 	}
 
-	// Criar método cashWithdrawal
 	cashWithdrawal(amount) {
-		// Implementar esse método
+		if (amount <= this.#balance) {
+			this.#balance -= amount;
+			console.log(`Retirada de R$ ${amount.toFixed(2)} realizada com sucesso.`);
+		} else {
+			console.log("Saldo insuficiente para realizar a retirada.");
+		}
 	}
+
 }
 
 module.exports = { BankAccount };
