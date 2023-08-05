@@ -117,7 +117,7 @@ Além disso, a classe `SavingAccount` deve sobrescrever o método `cashWithdrawa
 
 ___
 
-<!--
+
 DESAFIO:
 > Essa etapa **não** é obrigatória!!!
 
@@ -168,4 +168,4 @@ A classe `Client` deve ser alterada da seguinte maneira:
 
 ### BankAccount
 A classe `BankAccount` deve ser alterada da seguinte maneira:
-- No constructor, no momento em que se valida se o cliente tem conta naquele banco, `element.bankCode` agora será `element.bank.bankCode`, pois agora banks é uma array de objetos. -->
+- No constructor, no momento em que se valida se o cliente tem conta naquele banco, `element.bankCode` agora será `element.bank.bankCode`, pois agora banks é uma array de objetos.
