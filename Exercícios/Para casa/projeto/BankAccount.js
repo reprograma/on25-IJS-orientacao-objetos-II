@@ -105,7 +105,14 @@ class BankAccount {
 		}
 	}
 
-	// Criar método cashWithdrawal
+	cashWithdrawal(amount) {
+		if (this.#balance >= amount) {
+			this.#balance -= amount
+			console.log(`Operação realizada! Seu saldo agora é de: R$ ${this.#balance}`);
+		} else {
+			console.log(`Você não tem saldo o suficiente para a operação.O seu saldo atual é de R$${this.balance}`)
+		}
+	}
 }
 
 module.exports = { BankAccount };

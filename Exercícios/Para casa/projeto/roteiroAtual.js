@@ -2,6 +2,7 @@
 const { Bank } = require('./Bank');
 const { Client } = require('./Client');
 const { BankAccount } = require('./BankAccount');
+const { SavingAccount } = require('./SavingAccount');
 
 // Criação de bancos
 const bank1 = new Bank(100, 'Lua Bank', 0.01);
@@ -65,14 +66,3 @@ bankAccount2.creditAmount(2000); // O novo saldo da conta após o crédito é: R
 bankAccount1.transferTo(bankAccount2, 1500);
 bankAccount2.transferTo(bankAccount1, 5000);
 
-/** Exemplo de saídas:
-  Essa transferência terá uma taxa de 1%, pois se trata de uma transferência entre bancos diferentes.
-  O saldo atual da conta de origem é de R$ 3485
-  O saldo atual da conta de destino é de R$ 3500
-
-  ---
-
-  Essa transferência terá uma taxa de 2%, pois se trata de uma transferência entre bancos diferentes.
-  Saldo insuficiente para realizar a transferência. Seu saldo atual é de 3500.
-  Para realizar essa transferência você precisa ter 5100 em conta.
-*/
