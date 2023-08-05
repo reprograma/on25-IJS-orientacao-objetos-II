@@ -73,5 +73,4 @@ class Client {
 		console.log(`Banco ${bank.bankCode} removido da cliente ${this.name}`);
 	}
 }
-
 module.exports = { Client };

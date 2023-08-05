@@ -26,7 +26,7 @@ class BankAccount {
 			undefined
 		) {
 			return new Error(
-				`Cliente do CPF ${client.cpf} não possui conta no banco ${bank.bankName}`
+				`Cliente do CPF ${client.cpf} não possui conta no banco ${bank.bankName}.`
 			);
 		}
 		this.client = client;
@@ -45,12 +45,12 @@ class BankAccount {
 
 	creditAmount(amount) {
 		this.#balance += amount;
-		console.log(`O novo saldo da conta é: R$ ${this.#balance}`);
+		console.log(`O novo saldo da conta é: R$ ${this.#balance},00.`);
 	}
 
 	debitAmount(amount) {
 		this.#balance -= amount;
-		console.log(`O novo saldo da conta é: R$ ${this.#balance}`);
+		console.log(`O novo saldo da conta é: R$ ${this.#balance},00.`);
 	}
 
 	transferTo(anotherAccount, amount) {
@@ -73,9 +73,9 @@ class BankAccount {
 			this.#balance -= amountToBeDebited;
 			anotherAccount.balance += amount;
 
-			console.log(`O saldo atual da conta de origem é de R$ ${this.#balance}`);
+			console.log(`O saldo atual da conta de origem é de R$ ${this.#balance},00.`);
 			console.log(
-				`O saldo atual da conta de destino é de R$ ${anotherAccount.balance}`
+				`O saldo atual da conta de destino é de R$ ${anotherAccount.balance},00.`
 			);
 		} else {
 			console.log(
@@ -106,6 +106,13 @@ class BankAccount {
 	}
 
 	// Criar método cashWithdrawal
+	cashWithdrawal(amount) {
+		if(this.#balance != 0) {
+			this.debitAmount(amount)
+			console.log(`Retirada realizada. O saldo atual da conta é de R$ ${this.#balance},00.`)
+		} else {
+			console.log(`Você não possui saldo suficiente para realizar esta operação`)
+		}
+	}	
 }
-
 module.exports = { BankAccount };
