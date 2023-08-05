@@ -1,17 +1,11 @@
 const { Bank } = require('./Bank');
+const { Person } = require('./Manager');
 
-class Client {
-	name;
-	#cpf;
+class Client extends Person {
 	banks = [];
 
 	constructor(name, cpf) {
-		this.name = name;
-		this.#cpf = cpf;
-	}
-
-	get cpf() {
-		return this.#cpf;
+		super(name, cpf);
 	}
 
 	hasAccountInThisBank(bank) {
@@ -33,14 +27,13 @@ class Client {
 			);
 			return;
 		}
-
-		this.banks.push(bank);
 		const bankIndex = Bank.createdBanks.findIndex(
 			(element) => element.bankCode === bank.bankCode
 		);
 		Bank.createdBanks[bankIndex].qtdClients++;
-
-		console.log(`Banco ${bank.bankCode} adicionado à cliente ${this.name}.`);
+		const result = this.#getAnyManager(bank);
+		this.banks.push(bank, result);
+		console.log(`Banco ${bank.bankCode} e Gerente ${result}, adicionado à cliente ${this.name}.`);
 	}
 
 	removeBank(bank) {
@@ -65,6 +58,14 @@ class Client {
 		Bank.createdBanks[bankIndex].qtdClients--;
 
 		console.log(`Banco ${bank.bankCode} removido da cliente ${this.name}`);
+	}
+
+	#getAnyManager(bank) {
+		const managers = bank.managers;
+		const anyManager = Math.floor(Math.random() * managers.length);
+		const result = managers[anyManager];
+		result.addClient();
+		return result;
 	}
 }
 
