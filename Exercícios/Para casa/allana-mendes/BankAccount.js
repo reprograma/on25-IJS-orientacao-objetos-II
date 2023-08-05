@@ -47,14 +47,14 @@ class BankAccount {
     console.log(`O novo saldo da conta é: R$ ${this.#balance}`);
   }
 
-  transferTo(anotherAccount, amount) {
-    if (!(anotherAccount instanceof BankAccount)) {
+  transferTo(destinationAccount, amount) {
+    if (!(destinationAccount instanceof BankAccount)) {
       console.log("Informe uma conta válida!");
       return;
     }
 
     let amountToBeDebited = amount;
-    if (this.bank.bankCode !== anotherAccount.bank.bankCode) {
+    if (this.bank.bankCode !== destinationAccount.bank.bankCode) {
       amountToBeDebited = amount + amount * this.bank.transferTax;
       console.log(
         `Essa transferência terá uma taxa de ${
@@ -65,11 +65,11 @@ class BankAccount {
 
     if (this.#balance >= amountToBeDebited) {
       this.#balance -= amountToBeDebited;
-      anotherAccount.balance += amount;
+      destinationAccount.balance += amount;
 
       console.log(`O saldo atual da conta de origem é de R$ ${this.#balance}`);
       console.log(
-        `O saldo atual da conta de destino é de R$ ${anotherAccount.balance}`
+        `O saldo atual da conta de destino é de R$ ${destinationAccount.balance}`
       );
     } else {
       console.log(
@@ -99,9 +99,17 @@ class BankAccount {
     }
   }
 
-  // Criar método cashWithdrawal
   cashWithdrawal(amount) {
-    // Implementar esse método
+    if (this.#balance < amount) {
+      console.log(
+        `Você não tem saldo suficiente para realizar a retirada de ${amount} reais - Saldo atual: RS ${
+          this.#balance
+        }`
+      );
+    } else {
+      this.debitAmount(amount);
+      console.log(`Saque no valor de R$ ${amount} realizado com sucesso!`);
+    }
   }
 }
 
