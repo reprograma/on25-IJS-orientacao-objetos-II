@@ -2,48 +2,47 @@ class Funcionario {
   nome;
   cpf;
   salario;
-  aumento = 0.1;
-
+  aumento;
   constructor(nome, cpf, salario) {
     this.nome = nome;
     this.cpf = cpf;
     this.salario = salario;
+    this.aumento = 0.1;
   }
 
   receberAumento() {
     this.salario += this.salario * this.aumento;
-    console.log(`O novo salário é de R$ ${this.salario},00.`);
+    return this.salario;
   }
 
   exibirDados() {
-    console.log(`Nome: ${this.nome}`);
-    console.log(`CPF: ${this.cpf}`);
-    console.log(`Salário: ${this.salario}`);
+    console.log(`O funcionário se chama: ${this.nome}`);
+    console.log(`O cpf do funcionário é: ${this.cpf}`);
+    console.log(`o salario do funcionário é  ${this.salario} `);
   }
 }
-
-// const funcionario1 = new Funcionario('Marta', 12345678, 1000);
-// funcionario1.receberAumento();
-// funcionario1.exibirDados();
+const funcionario1 = new Funcionario("João", 12584785695, 1500);
+funcionario1.receberAumento();
+funcionario1.exibirDados();
 
 class Gerente extends Funcionario {
-  nivelGerencia;
+  nivelDeGerencia;
   aumento = 0.15;
 
-  constructor(nome, cpf, salario, nivelGerencia) {
+  constructor(nome, cpf, salario, nivelDeGerencia) {
     super(nome, cpf, salario);
-    this.nivelGerencia = nivelGerencia;
+    this.nivelDeGerencia = nivelDeGerencia;
   }
 
   exibirDados() {
     super.exibirDados();
-    console.log(`Nível de gerência: ${this.nivelGerencia}`);
+    console.log(`O nível de gerencia é ${this.nivelDeGerencia}`);
   }
 }
 
-// const gerente1 = new Gerente('Debora', 123456789, 1000, 'Junior');
-// gerente1.receberAumento();
-// gerente1.exibirDados();
+const gerente1 = new Gerente("Luis", 12548796587, 10000, "Pleno");
+gerente1.receberAumento();
+gerente1.exibirDados();
 
 class Assistente extends Funcionario {
   matricula;
@@ -55,13 +54,11 @@ class Assistente extends Funcionario {
 
   exibirDados() {
     super.exibirDados();
-    console.log(`Matrícula: ${this.matricula}`);
+    console.log(`O número de matricula é ${this.matricula}`);
   }
 }
 
-// const assistente = new Assistente('Josefa', 1234567, 1000, 111);
-// assistente.receberAumento();
-// assistente.exibirDados();
+const assistente1 = new Assistente("Joaquim", 154145785, 1850, 987654321);
 
 class AssistenteTecnico extends Assistente {
   bonusSalarial;
@@ -70,16 +67,21 @@ class AssistenteTecnico extends Assistente {
     super(nome, cpf, salario, matricula);
     this.bonusSalarial = bonusSalarial;
   }
-
   exibirDados() {
     super.exibirDados();
-    console.log(`Bônus salarial: ${this.bonusSalarial}`);
+    console.log(`O bonusSalarial é ${this.bonusSalarial}`);
   }
 }
 
-// const assistenteTecnico = new AssistenteTecnico('Lais', 123456789, 10000, 111, 1000)
-// assistenteTecnico.receberAumento()
-// assistenteTecnico.exibirDados()
+const assistenteTecnico1 = new AssistenteTecnico(
+  "Joana",
+  789654123,
+  12450,
+  123,
+  500
+);
+console.log(assistenteTecnico1);
+assistenteTecnico1.exibirDados();
 
 class AssistenteAdministrativo extends Assistente {
   turno;
@@ -93,12 +95,23 @@ class AssistenteAdministrativo extends Assistente {
 
   exibirDados() {
     super.exibirDados();
-    console.log(`Turno: ${this.turno}`);
-    if(this.turno === 'noite') {
-      console.log(`Adicional noturno: ${this.adicionalNoturno}`);
+    console.log(`O turno é ${this.turno}`);
+
+    if (this.turno == "noturno") {
+      console.log(
+        `O turno é ${this.turno}, portanto, o adicional noturno é de R$${this.adicionalNoturno}`
+      );
     }
   }
 }
 
-const assistenteAdm = new AssistenteAdministrativo('Lara', 123456768, 10000, 111, 'dia', 500)
-assistenteAdm.exibirDados()
+const assistenteAdministrativo1 = new AssistenteAdministrativo(
+  "Ana",
+  12356987458,
+  2500,
+  123,
+  "noturno",
+  500
+);
+
+console.log(assistenteAdministrativo1.exibirDados());

@@ -1,40 +1,57 @@
 class Ingresso {
-	lote;
-	preco_promocional = 10;
-	preco_primeiro_lote = 20;
-	preco_segundo_lote = 30;
-	preco_terceiro_lote = 40;
+  lote;
+  preco_promocional = 10;
+  preco_primeiro_lote = 20;
+  preco_segundo_lote = 30;
+  preco_terceiro_lote = 40;
 
-	constructor(lote) {
-		this.lote = lote;
-	}
+  constructor(lote) {
+    this.lote = lote;
+  }
 
-	mostrarPreco() {
-		if (this.lote === 'promocional') {
-			console.log(`Preço do ingresso: R$ ${this.preco_promocional}`);
-		} else if (this.lote === 'primeiro') {
-			console.log(`Preço do ingresso: R$ ${this.preco_primeiro_lote}`);
-		} else if (this.lote === 'segundo') {
-			console.log(`Preço do ingresso: R$ ${this.preco_segundo_lote}`);
-		} else if (this.lote === 'terceiro') {
-			console.log(`Preço do ingresso: R$ ${this.preco_terceiro_lote}`);
-		} else {
-			console.log('Lote não encontrado.');
-		}
-	}
+  mostarPreco(){
+    switch(this.lote) {
+      case 'promocional':
+       console.log(`Preço do ingresso : R$ ${this.preco_promocional} -  - Lote Promocional`) 
+        break;
+      case 'primeiro':
+        console.log(`Preço do ingresso : R$ ${this.preco_primeiro_lote} - Primeiro Lote`) 
+        break;
+      case 'segundo':
+        console.log(`Preço do ingresso : R$ ${this.preco_segundo_lote} - Segundo Lote`) 
+         break;
+      case 'terceiro':
+        console.log(`Preço do ingresso : R$ ${this.preco_terceiro_lote} - Terceiro Lote`) 
+        break;  
+      default:
+        console.log(`Lote não encontrado`) 
+    }
+  } 
 }
 
-class IngressoNormal extends Ingresso {}
+class IngressoNormal extends Ingresso {
 
-class IngressoVIP extends Ingresso {
-	preco_promocional = 50;
-	preco_primeiro_lote = 60;
-	preco_segundo_lote = 70;
-	preco_terceiro_lote = 80;
+  mostarPreco() {
+    console.log(`Ingresso Normal`)
+    super.mostarPreco();
+  }
 }
 
-const ingressoNormal1 = new IngressoNormal('segundo');
-ingressoNormal1.mostrarPreco();
+class IngressoVip extends Ingresso {
+  preco_promocional = 50;
+  preco_primeiro_lote = 60;
+  preco_segundo_lote = 70;
+  preco_terceiro_lote = 80;
 
-const ingressoVip1 = new IngressoVIP('segundo');
-ingressoVip1.mostrarPreco();
+  mostarPreco(){
+    console.log(`Ingresso VIP`)
+    super.mostarPreco();
+  }
+}
+
+
+const tardezinha = new IngressoNormal('primeiro')
+console.log(tardezinha.mostarPreco())
+
+const rockInRio = new IngressoVip('primeiro')
+console.log(rockInRio.mostarPreco())

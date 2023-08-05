@@ -1,23 +1,24 @@
-class Person {
-  name;
-  age;
+class Animal {
+  nome;
+  idade;
 
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  }
-
-  speak() {
-    console.log(`A pessoa de nome ${this.name} está falando.`);
+  constructor(nome, idade) {
+    this.nome = nome;
+    this.idade = idade;
   }
 }
 
-class User extends Person {
-  speak() {
-    super.speak();
-    console.log('Essa pessoa é uma usuária.');
+class Cachorro extends Animal {
+  corDoPelo;
+  porte;
+
+  constructor(nome, idade, corDoPelo, porte) {
+    super(nome, idade)
+    this.corDoPelo = corDoPelo;
+    this.porte = porte;
   }
 }
 
-const user1 = new User('Luara', 28)
-user1.speak();
+const peludinho = new Cachorro ("Peludinho", 8, "preto", "médio");
+
+console.log(peludinho.idade)

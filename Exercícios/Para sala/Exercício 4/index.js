@@ -1,22 +1,25 @@
 class Ingresso {
-	preco = 10;
+  preco = 300;
 
-	mostrarPreco() {
-		console.log(`Preço do ingresso: R$ ${this.preco}`);
-	}
+  mostrarPreco() {
+    console.log(`O valor do ingresso é ${this.preco},00.`);
+  }
 }
-
-// const ingresso1 = new Ingresso()
-// ingresso1.mostrarPreco();
 
 class IngressoNormal extends Ingresso {}
+// class IngressoVip extends Ingresso {
+//   adicional = 500;
+//   preco = this.preco + (this.adicional + this.preco)
+// }
 
-class IngressoVIP extends Ingresso {
-	preco = 50;
+
+class IngressoVip extends Ingresso {
+  preco = 500;
 }
+const ingressoDjavan =  new Ingresso;
+const ingressoDjavanVIP =  new IngressoVip;
 
-const ingressoNormal1 = new IngressoNormal();
-const ingressoVip1 = new IngressoVIP();
-
-ingressoNormal1.mostrarPreco();
-ingressoVip1.mostrarPreco();
+console.log(ingressoDjavan)
+console.log(ingressoDjavan.mostrarPreco())
+console.log(ingressoDjavanVIP)
+console.log(ingressoDjavanVIP.mostrarPreco())

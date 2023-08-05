@@ -91,7 +91,9 @@ const savingAccount2 = new SavingAccount(client3, bank2, 7777, 8888, 0.05, 5);
 // Utilizando os métodos de Conta Poupança
 savingAccount1.creditAmount(1300); // O novo saldo da conta após o crédito é: R$ 1300,00
 savingAccount1.debitAmount(300); // O novo saldo da conta após o débito é: R$ 1000,00
+savingAccount1.generateIncome(19); //Não é dia de rendimento. O seu saldo atual é 1000
 savingAccount1.generateIncome(20); // Seu novo saldo após rendimentos é de R$ 1100,00
+
 
 // Transferência entre bancos diferentes
 savingAccount1.transferTo(savingAccount2, 100);

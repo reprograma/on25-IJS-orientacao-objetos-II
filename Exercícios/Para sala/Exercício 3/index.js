@@ -1,25 +1,26 @@
 class Mae {
-	nacionalidade;
-	corDosOlhos;
-	corDoCabelo;
+  nome;
+  nacionalidade;
+  corDosOlhos;
+  corDoCabelo;
 
-	constructor(nacionalidade, corDosOlhos, corDoCabelo) {
-		this.nacionalidade = nacionalidade;
-		this.corDosOlhos = corDosOlhos;
-		this.corDoCabelo = corDoCabelo;
-	}
-
-	mostrarCaracteristicas() {
-		return `Essa pessoa é ${this.nacionalidade}, tem olhos ${this.corDosOlhos} e cabelo da cor ${this.corDoCabelo}`;
-	}
+  constructor(nome, nacionalidade,corDosOlhos, corDoCabelo) {
+    this.nome = nome;
+    this.nacionalidade = nacionalidade;
+    this.corDosOlhos = corDosOlhos; 
+    this.corDoCabelo = corDoCabelo;
+  }
+  mostrarCaracteristicas() {
+    console.log(`Essa pessoa é ${this.nacionalidade}, tem cor dos olhos: ${this.corDosOlhos} e cor do cabelo: ${this.corDoCabelo}` )
+  }
 }
 
-const mae1 = new Mae('brasileira', 'pretos', 'castanho');
-const retorno = mae1.mostrarCaracteristicas();
-console.log(retorno);
+class Filha extends Mae {
+}
 
-class Filha extends Mae {}
+const tania = new Mae ("Tania", "Brasileira", "castanhos", "pretos");
 
-const filha1 = new Filha('brasileira', 'pretos', 'ruivo');
-const retornoFilha1 = filha1.mostrarCaracteristicas();
-console.log(retornoFilha1);
+const laissa = new Filha("Laíssa", "Brasileira", "castanhos", "castanhos escuros")
+
+console.log(tania);
+console.log(laissa);
