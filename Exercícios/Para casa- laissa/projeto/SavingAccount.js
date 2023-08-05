@@ -4,6 +4,27 @@ class SavingAccount extends BankAccount {
   #qtdWithdrawal = 0;
   #MAX_OF_WITHDRAWAL = 2; // Letras maiusculas para constantes - esse valor não vai mudar.
   #withdrawalTax = 0.03;
+  incomeRate;
+  incomeDay;
+
+  constructor(client, bank, accountNumber, agencyNumber,incomeRate,incomeDay){
+    super(client, bank, accountNumber, agencyNumber);
+    this.incomeRate = incomeRate;
+    this.incomeDay = incomeDay;
+  }
+
+  get qtdWithdrawal() {
+    return this.#qtdWithdrawal;
+  }
+
+  generateIncome(currentDay){
+    if(currentDay == this.incomeDay) {
+      this.balance += this.balance * this.incomeRate;
+      console.log(`Aqui o seu dinheiro rende!! O seu saldo atual é ${this.balance}`);
+    } else {
+      console.log(`Não é dia de rendimento. O seu saldo atual é ${this.balance}`);
+    }
+  }
 
   cashWithdrawal(amount) {
     console.log(
@@ -39,3 +60,5 @@ class SavingAccount extends BankAccount {
     console.log(`Você já realizou ${this.#qtdWithdrawal} retiradas.`);
   }
 }
+
+module.exports = {SavingAccount}
