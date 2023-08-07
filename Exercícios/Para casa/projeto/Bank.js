@@ -1,26 +1,36 @@
+const { Manager } = require("./Manager");
+
 class Bank {
-	bankCode;
-	bankName;
-	#trasferTax;
-	// DESAFIO: Criar atributo managers (inicializado como array vazia)
+  bankCode;
+  bankName;
+  #trasferTax;
+  managers = [];
 
-	static createdBanks = [];
+  static createdBanks = [];
 
-	constructor(bankCode, bankName, transferTax) {
-		this.bankCode = bankCode;
-		this.bankName = bankName;
-		this.#trasferTax = transferTax;
-		this.constructor.createdBanks.push({
-			bankCode: this.bankCode,
-			qtdClients: 0,
-		});
-	}
+  constructor(bankCode, bankName, transferTax) {
+    this.bankCode = bankCode;
+    this.bankName = bankName;
+    this.#trasferTax = transferTax;
+    this.constructor.createdBanks.push({
+      bankCode: this.bankCode,
+      qtdClients: 0,
+    });
+  }
 
-	get transferTax() {
-		return this.#trasferTax;
-	}
+  get transferTax() {
+    return this.#trasferTax;
+  }
 
-	// DESAFIO: Criar método contractManager
+  contractManager(manager) {
+    if (!(manager instanceof Manager)) {
+      return new Error("Informe um cliente válido");
+    } else {
+      this.managers.push(manager);
+      console.log(`Gerente ${manager.name} contratado(a) no banco ${this.bankName}`)
+    }
+  }
 }
 
 module.exports = { Bank };
+

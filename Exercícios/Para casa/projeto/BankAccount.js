@@ -16,8 +16,9 @@ class BankAccount {
       return new Error("Informe um banco válido");
     }
     if (
-      client.banks.find((element) => element.bankCode === bank.bankCode) ===
-      undefined
+      client.banks.find(
+        (element) => element.bank.bankCode === bank.bankCode
+      ) === undefined
     ) {
       return new Error(
         `Cliente do CPF ${client.cpf} não possui conta no banco ${bank.bankName}`

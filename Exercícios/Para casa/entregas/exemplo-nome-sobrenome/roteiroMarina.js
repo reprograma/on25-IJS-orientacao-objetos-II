@@ -4,6 +4,9 @@ const { Client } = require("../../projeto/Client");
 const { BankAccount } = require("../../projeto/BankAccount");
 const { CurrentAccount } = require("../../projeto/CurrentAccount");
 const { SavingAccount } = require("../../projeto/SavingAccount");
+const { Person } = require("../../projeto/Person");
+const { Manager } = require("../../projeto/Manager");
+
 
 // Criação de bancos
 const bank1 = new Bank(100, "Lua Bank", 0.01);
