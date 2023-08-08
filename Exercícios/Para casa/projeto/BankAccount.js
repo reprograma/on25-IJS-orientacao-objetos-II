@@ -102,6 +102,14 @@ class BankAccount {
 	// Criar método cashWithdrawal
 	cashWithdrawal(amount) {
 		// Implementar esse método
+		if(amount > this.#balance) {
+			return new Error(
+				`Saldo insuficiente para retirada.`
+			)
+		}
+
+		this.debitAmount(amount)
+		console.log(`Valor de R$ ${amount},00 retirado, saldo atual de R$ ${this.#balance},00`)
 	}
 }
 
