@@ -11,24 +11,20 @@ class Funcionario {
   }
 
   receberAumento() {
-    this.salario += this.salario * this.aumento;
-    console.log(`O novo salário é de R$ ${this.salario},00.`);
+    this.salario += this.salario * this.aumento
+    console.log(`O novo salário é de ${this.salario}`)
   }
 
   exibirDados() {
-    console.log(`Nome: ${this.nome}`);
-    console.log(`CPF: ${this.cpf}`);
-    console.log(`Salário: ${this.salario}`);
+    console.log(this.nome)
+    console.log(this.cpf)
+    console.log(this.salario)
   }
 }
 
-// const funcionario1 = new Funcionario('Marta', 12345678, 1000);
-// funcionario1.receberAumento();
-// funcionario1.exibirDados();
-
 class Gerente extends Funcionario {
   nivelGerencia;
-  aumento = 0.15;
+  aumento = 15;
 
   constructor(nome, cpf, salario, nivelGerencia) {
     super(nome, cpf, salario);
@@ -37,13 +33,9 @@ class Gerente extends Funcionario {
 
   exibirDados() {
     super.exibirDados();
-    console.log(`Nível de gerência: ${this.nivelGerencia}`);
+    console.log(this.nivelGerencia)
   }
 }
-
-// const gerente1 = new Gerente('Debora', 123456789, 1000, 'Junior');
-// gerente1.receberAumento();
-// gerente1.exibirDados();
 
 class Assistente extends Funcionario {
   matricula;
@@ -54,14 +46,10 @@ class Assistente extends Funcionario {
   }
 
   exibirDados() {
-    super.exibirDados();
-    console.log(`Matrícula: ${this.matricula}`);
+    super.exibirDados()
+    console.log(this.matricula)
   }
 }
-
-// const assistente = new Assistente('Josefa', 1234567, 1000, 111);
-// assistente.receberAumento();
-// assistente.exibirDados();
 
 class AssistenteTecnico extends Assistente {
   bonusSalarial;
@@ -73,13 +61,9 @@ class AssistenteTecnico extends Assistente {
 
   exibirDados() {
     super.exibirDados();
-    console.log(`Bônus salarial: ${this.bonusSalarial}`);
+    console.log(this.bonusSalarial);
   }
 }
-
-// const assistenteTecnico = new AssistenteTecnico('Lais', 123456789, 10000, 111, 1000)
-// assistenteTecnico.receberAumento()
-// assistenteTecnico.exibirDados()
 
 class AssistenteAdministrativo extends Assistente {
   turno;
@@ -93,12 +77,7 @@ class AssistenteAdministrativo extends Assistente {
 
   exibirDados() {
     super.exibirDados();
-    console.log(`Turno: ${this.turno}`);
-    if(this.turno === 'noite') {
-      console.log(`Adicional noturno: ${this.adicionalNoturno}`);
-    }
+    console.log(this.turno);
+    if(this.turno === "noturno") console.log(this.adicionalNoturno)
   }
 }
-
-const assistenteAdm = new AssistenteAdministrativo('Lara', 123456768, 10000, 111, 'dia', 500)
-assistenteAdm.exibirDados()

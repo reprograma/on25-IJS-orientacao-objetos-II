@@ -1,9 +1,11 @@
 class Ingresso {
+	preco;
 	lote;
-	preco_promocional = 10;
-	preco_primeiro_lote = 20;
-	preco_segundo_lote = 30;
-	preco_terceiro_lote = 40;
+
+	LOTE_PROMOCIONAL = 5;
+	PRIMEIRO_LOTE = 10;
+	SEGUNDO_LOTE = 15;
+	TERCEIRO_LOTE = 20;
 
 	constructor(lote) {
 		this.lote = lote;
@@ -11,40 +13,43 @@ class Ingresso {
 
 	mostrarPreco() {
 		if (this.lote === 'promocional') {
-			console.log(`Preço do ingresso: R$ ${this.preco_promocional} - Lote promocional`);
+			this.preco = this.LOTE_PROMOCIONAL;
 		} else if (this.lote === 'primeiro') {
-			console.log(`Preço do ingresso: R$ ${this.preco_primeiro_lote} - Primeiro lote`);
+			this.preco = this.PRIMEIRO_LOTE;
 		} else if (this.lote === 'segundo') {
-			console.log(`Preço do ingresso: R$ ${this.preco_segundo_lote} - segundo lote`);
+			this.preco = this.SEGUNDO_LOTE;
 		} else if (this.lote === 'terceiro') {
-			console.log(`Preço do ingresso: R$ ${this.preco_terceiro_lote} - terceiro lote`);
+			this.preco = this.TERCEIRO_LOTE;
 		} else {
-			console.log('Lote não encontrado.');
+			this.preco = undefined;
+			console.log('Lote não encontrado');
+			return;
 		}
+
+		console.log(`R$ ${this.preco},00`);
 	}
 }
 
 class IngressoNormal extends Ingresso {
   mostrarPreco() {
-    console.log('INGRESSO NORMAL');
+    console.log("INGRESSO NORMAL");
     super.mostrarPreco();
   }
 }
 
 class IngressoVIP extends Ingresso {
-	preco_promocional = 50;
-	preco_primeiro_lote = 60;
-	preco_segundo_lote = 70;
-	preco_terceiro_lote = 80;
+	LOTE_PROMOCIONAL = 50;
+	PRIMEIRO_LOTE = 60;
+	SEGUNDO_LOTE = 70;
+	TERCEIRO_LOTE = 80;
 
   mostrarPreco() {
-    console.log('INGRESSO VIP');
+    console.log("INGRESSO VIP");
     super.mostrarPreco();
   }
 }
 
-const ingressoNormal1 = new IngressoNormal('primeiro');
-ingressoNormal1.mostrarPreco();
-
-const ingressoVip1 = new IngressoVIP('promocional');
-ingressoVip1.mostrarPreco();
+const ingresso1 = new IngressoNormal("primeiro");
+const ingresso2 = new IngressoVIP("primeiro");
+ingresso1.mostrarPreco();
+ingresso2.mostrarPreco();
