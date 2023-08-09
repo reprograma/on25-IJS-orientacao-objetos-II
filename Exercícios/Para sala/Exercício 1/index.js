@@ -1,49 +1,49 @@
 class InvoiceItem {
-	#id;
-	#description;
-	#quantity;
-	#unityPrice;
+    #id;
+    #description;
+    #quantity;
+    #unityPrice;
+  
+    constructor(id, description, quantity, unityPrice) {
+      this.#id = id;
+      this.#description = description;
+      this.#quantity = quantity;
+      this.#unityPrice = unityPrice;
+    }
 
-	constructor(id, description, quantity, unityPrice) {
-		this.#id = id;
-		this.#description = description;
-		this.#quantity = quantity;
-		this.#unityPrice = unityPrice;
-	}
+    get id() {
+        return this.#id;
+    }
 
-	get id() {
-		return this.#id;
-	}
+    get desc() {
+        return this.#description;
+    }
 
-	get description() {
-		return this.#description;
-	}
+    get qty() {
+        return this.#quantity;
+    }
 
-	get quantity() {
-		return this.#quantity;
-	}
+    set qty(quantity) {
+       this.#quantity = quantity;
+    }
 
-	set quantity(newQuantity) {
-		this.#quantity = newQuantity;
-	}
+    get unityPrice() {
+        return this.#unityPrice;
+    }
+    
+    set unityPrice(unityPrice) {
+        this.#unityPrice = unityPrice;
+    }
 
-	get unityPrice() {
-		return this.#unityPrice;
-	}
+    get total() {
+        return this.#unityPrice * this.#quantity;
+    }
 
-	set unityPrice(newUnityPrice) {
-		this.#unityPrice = newUnityPrice;
-	}
+    toString() {
+        console.log("id", this.#id);
+        console.log("description", this.#description);
+        console.log("quantity", this.#quantity);
+        console.log("unity price", this.#unityPrice);
+    }
 
-	get total() {
-		return this.#unityPrice * this.#quantity;
-	}
-
-	toString() {
-		console.log(
-			`id: ${this.#id}, description: ${this.#description}, quantity: ${
-				this.#quantity
-			}, unityPrice: ${this.#unityPrice}, total: ${this.total}`
-		);
-	}
-}
+  }
