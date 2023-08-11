@@ -41,12 +41,12 @@ class BankAccount {
 
 	creditAmount(amount) {
 		this.#balance += amount;
-		console.log(`O novo saldo da conta é: R$ ${this.#balance}`);
+		console.log(`O novo saldo da conta é: R$ ${this.#balance},00`);
 	}
 
 	debitAmount(amount) {
 		this.#balance -= amount;
-		console.log(`O novo saldo da conta é: R$ ${this.#balance}`);
+		console.log(`O novo saldo da conta é: R$ ${this.#balance},00`);
 	}
 
 	transferTo(anotherAccount, amount) {

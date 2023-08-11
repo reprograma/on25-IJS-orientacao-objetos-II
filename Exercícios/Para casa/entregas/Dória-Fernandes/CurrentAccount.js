@@ -7,6 +7,15 @@ class CurrentAccount extends BankAccount {
         super(client, bank, accountNumber, agencyNumber);
     }
 
+    creditAmount(amount) {
+        if (amount < 0) {
+            console.log("Esse não é um valor válido");
+        } else {
+            this.balance += amount;
+            console.log(`Seu saldo atual é de R$${this.balance},00`)
+        }
+    }
+
     transferTo(anotherAccount, amount) {
         if (!(anotherAccount instanceof CurrentAccount)) {
             console.log('Informe uma conta válida!');
