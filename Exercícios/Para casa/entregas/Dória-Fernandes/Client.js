@@ -32,8 +32,8 @@ class Client extends Person {
 		);
 		Bank.createdBanks[bankIndex].qtdClients++;
 		const result = this.#getAnyManager(bank);
-		this.banks.push(bank, result);
-		console.log(`Banco ${bank.bankCode} e Gerente ${result}, adicionado à cliente ${this.name}.`);
+		this.banks.push(`Banco: ${bank.bankName}, Gerente: ${result.name}`);
+		console.log(`Banco ${bank.bankCode} e Gerente ${result.name}, adicionado à cliente ${this.name}.`);
 	}
 
 	removeBank(bank) {
