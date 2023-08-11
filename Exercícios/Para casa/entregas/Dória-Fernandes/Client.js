@@ -64,7 +64,7 @@ class Client extends Person {
 		const managers = bank.managers;
 		const anyManager = Math.floor(Math.random() * managers.length);
 		const result = managers[anyManager];
-		result.addClient();
+		result.addClient(this);
 		return result;
 	}
 }

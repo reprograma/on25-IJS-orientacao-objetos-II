@@ -31,7 +31,7 @@ class Manager extends Person {
     }
 
     addClient(client) {
-        this.clients.push(client);
+        this.clients.push(client.name);
     }
 }
 
