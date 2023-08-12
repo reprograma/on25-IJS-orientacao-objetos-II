@@ -96,6 +96,7 @@ Manager { name: 'Sandra', clients: [ 'Luara', 'Simone' ] }
 const currentAccount1 = new CurrentAccount(client1, bank1, 1111, 2222);
 const currentAccount2 = new CurrentAccount(client2, bank2, 3333, 4444);
 
+
 // Utilizando os métodos de Conta Corrente
 currentAccount1.creditAmount(5000); // O novo saldo da conta após o crédito é: R$ 5000,00
 currentAccount2.creditAmount(2000); // O novo saldo da conta após o crédito é: R$ 2000,00

@@ -30,3 +30,5 @@ class SavingAccount extends BankAccount {
     console.log(`Você já realizou ${this.#qtdWithdrawal} retiradas.`);
   }
 }
+
+module.exports = { SavingAccount };

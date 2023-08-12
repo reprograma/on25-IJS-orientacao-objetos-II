@@ -27,13 +27,14 @@ class Client extends Person {
 			);
 			return;
 		}
+		this.banks.push(bank);
 		const bankIndex = Bank.createdBanks.findIndex(
 			(element) => element.bankCode === bank.bankCode
 		);
 		Bank.createdBanks[bankIndex].qtdClients++;
 		const result = this.#getAnyManager(bank);
-		this.banks.push(`Banco: ${bank.bankName}, Gerente: ${result.name}`);
-		console.log(`Banco ${bank.bankCode} e Gerente ${result.name}, adicionado à cliente ${this.name}.`);
+		this.banks.push(`${result.name}`);
+		console.log(`Banco ${bank.bankName} e Gerente ${result.name}, adicionado à cliente ${this.name}.`);
 	}
 
 	removeBank(bank) {

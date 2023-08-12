@@ -55,3 +55,39 @@ console.log(dooh);
 console.log(gui);
 console.log(ja);
 
+
+const keikoCurrent = new CurrentAccount(keiko, nubank, 123456, 654321);
+const pedrinCurrent = new CurrentAccount(pedrin, nubank, 756482, 237683);
+const phyCurrent = new CurrentAccount(phy, caixa, 567098, 098786)
+
+keikoCurrent.creditAmount(5000);
+pedrinCurrent.creditAmount(2000);
+
+// Transferência entre bancos diferentes
+keikoCurrent.transferTo(phyCurrent, 1500);
+// Transferência entre mesmo banco
+keikoCurrent.transferTo(pedrinCurrent, 500);
+
+// Retirada em banco 24h
+keikoCurrent.cashWithdrawal(100);
+keikoCurrent.cashWithdrawal(500);
+keikoCurrent.cashWithdrawal(200);
+keikoCurrent.cashWithdrawal(300);
+
+
+// Criação de conta poupança
+const keikoSaving = new SavingAccount(keiko, nubank, 345678, 567890, 20, 0.07);
+const pedrinSaving = new SavingAccount(pedrin, nubank, 756482, 237683, 10, 0.08);
+const phySaving = new SavingAccount(phy, caixa, 567098, 098786, 12, 0.03)
+
+// Utilizando os métodos de Conta Poupança
+keikoSaving.creditAmount(1300);
+keikoSaving.debitAmount(300);
+keikoSaving.generateIncome(20);
+
+// Retirada em banco 24 horas
+pedrinSaving.creditAmount(1000);
+pedrinSaving.cashWithdrawal(100);
+pedrinSaving.cashWithdrawal(500);
+pedrinSaving.cashWithdrawal(200);
+pedrinSaving.cashWithdrawal(300);

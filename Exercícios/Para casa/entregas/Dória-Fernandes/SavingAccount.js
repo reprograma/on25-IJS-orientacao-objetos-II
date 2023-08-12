@@ -41,7 +41,8 @@ class SavingAccount extends BankAccount {
         console.log(`Você não possui mais nenhuma retirada gratuita. `)
         return;
       } else {
-        console.log(`Você não possui saldo o suficiente`)
+        console.log(`Você não possui saldo o suficiente. Seu saldo atual é de R$${this.balance},00`)
+        return;
       }
     }
     if (this.#qtdWithdrawal == 1) {
@@ -55,7 +56,8 @@ class SavingAccount extends BankAccount {
         console.log(`Você não possui mais nenhuma retirada gratuita. `)
         return;
       } else {
-        console.log(`Você não possui saldo o suficiente`)
+        console.log(`Você não possui saldo o suficiente. Seu saldo atual é de R$${this.balance},00`)
+        return;
       }
     } if (this.#qtdWithdrawal == 0) {
       if (amount <= this.balance) {
@@ -68,7 +70,8 @@ class SavingAccount extends BankAccount {
         console.log(`Você ainda possui 1 retirada gratuita. `)
         return;
       } else {
-        console.log(`Você não possui saldo o suficiente`)
+        console.log(`Você não possui saldo o suficiente. Seu saldo atual é de R$${this.balance},00`)
+        return;
       }
     } else {
       console.log('Ops, ocorreu um erro')
@@ -78,10 +81,10 @@ class SavingAccount extends BankAccount {
   generateIncome(currentDay) {
     if (currentDay == this.incomeDay) {
       this.balance += this.balance * this.incomeRate;
-      console.log(`Seu novo saldo é ${this.balance},00`)
+      console.log(`Seu saldo rendeu. Seu novo saldo é R$${this.balance},00`)
       return;
     } else {
-      console.log('Income deu erro')
+      console.log('Hoje não é dia de rendimento')
     }
   }
 

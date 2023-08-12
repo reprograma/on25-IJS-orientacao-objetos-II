@@ -22,7 +22,7 @@ class BankAccount {
 			undefined
 		) {
 			return new Error(
-				`Cliente do CPF ${client.cpf} não possui conta no banco ${bank.bankName}`
+				`Cliente do CPF ${client.cpf} não possui conta no banco ${bank.bankName},`
 			);
 		}
 		this.client = client;
@@ -41,12 +41,12 @@ class BankAccount {
 
 	creditAmount(amount) {
 		this.#balance += amount;
-		console.log(`O novo saldo da conta é: R$ ${this.#balance},00`);
+		console.log(`Obrigada por confiar em nossos serviços, ${this.client.name}. Seu saldo atual é de R$${this.balance},00`)
 	}
 
 	debitAmount(amount) {
 		this.#balance -= amount;
-		console.log(`O novo saldo da conta é: R$ ${this.#balance},00`);
+		console.log(`Débito realizado com sucesso. O novo saldo da conta é: R$ ${this.#balance},00`);
 	}
 
 	transferTo(anotherAccount, amount) {

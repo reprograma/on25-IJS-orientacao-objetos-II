@@ -12,7 +12,7 @@ class CurrentAccount extends BankAccount {
             console.log("Esse não é um valor válido");
         } else {
             this.balance += amount;
-            console.log(`Seu saldo atual é de R$${this.balance},00`)
+            console.log(`Obrigada por confiar em nossos serviços, ${this.client.name}. Seu saldo atual é de R$${this.balance},00`)
         }
     }
 
