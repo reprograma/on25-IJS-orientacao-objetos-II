@@ -16,8 +16,9 @@ class BankAccount {
 			return new Error('Informe um banco válido');
 		}
 		if (
-			client.banks.find((element) => element.bankCode === bank.bankCode) ===
-			undefined
+			client.banks.find(
+				(element) => element.bank.bankCode === bank.bankCode // element.bankCode agora é element.bank.bankCode, pois agora banks é uma array de objetos
+			) === undefined
 		) {
 			return new Error(
 				`Cliente do CPF ${client.cpf} não possui conta no banco ${bank.bankName}`
@@ -39,12 +40,16 @@ class BankAccount {
 
 	creditAmount(amount) {
 		this.#balance += amount;
-		console.log(`O novo saldo da conta é: R$ ${this.#balance}`);
+		console.log(
+			`O novo saldo da conta após o crédito é: R$ ${this.#balance},00`
+		);
 	}
 
 	debitAmount(amount) {
 		this.#balance -= amount;
-		console.log(`O novo saldo da conta é: R$ ${this.#balance}`);
+		console.log(
+			`O novo saldo da conta após o débito é: R$ ${this.#balance},00`
+		);
 	}
 
 	transferTo(anotherAccount, amount) {
@@ -83,7 +88,7 @@ class BankAccount {
 	closeAccount() {
 		if (this.#balance === 0) {
 			console.log(
-				`CoEncerrando conta de ${this.client.name} no banco ${this.bank.bankName}.`
+				`Encerrando conta de ${this.client.name} no banco ${this.bank.bankName}.`
 			);
 			this.client = undefined;
 			this.accountNumber = undefined;
@@ -99,7 +104,20 @@ class BankAccount {
 		}
 	}
 
-	// Criar método cashWithdrawal
+	// Método criado
+	cashWithdrawal(amount) {
+		if (this.balance >= amount) {
+			this.balance -= amount;
+
+			console.log(
+				`Retirada realizada. O saldo atual da conta é de R$ ${this.balance}.`
+			);
+		} else {
+			console.log(
+				`Saldo insuficiente para realizar a transferência. Seu saldo atual é de R$ ${this.balance},00. Você precisa de R$ ${amount},00`
+			);
+		}
+	}
 }
 
 module.exports = { BankAccount };

@@ -1,7 +1,10 @@
+const { Manager } = require('./Manager');
+
 class Bank {
 	bankCode;
 	bankName;
 	#trasferTax;
+	managers = []; // Criado
 
 	static createdBanks = [];
 
@@ -18,7 +21,19 @@ class Bank {
 	get transferTax() {
 		return this.#trasferTax;
 	}
+
+	// Método criado
+	contractManager(manager) {
+		if (!(manager instanceof Manager)) {
+			console.log('Informe um gerente válido');
+			return;
+		}
+
+		this.managers.push(manager);
+		console.log(
+			`Gerente ${manager.name} contratada no banco ${this.bankName}.`
+		);
+	}
 }
 
 module.exports = { Bank };
-
