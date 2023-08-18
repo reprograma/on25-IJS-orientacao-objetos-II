@@ -8,8 +8,8 @@ class SavingAccount extends BankAccount {
   cashWithdrawal(amount) {
     console.log(`Você já realizou ${this.#qtdWithdrawal} retiradas. Você tem direito a ${this.#MAX_OF_WITHDRAWAL} retiradas gratuitas.`)
 
-    if(this.#qtdWithdrawal < this.#MAX_OF_WITHDRAWAL) {
-      if(this.balance >= amount) {
+    if (this.#qtdWithdrawal < this.#MAX_OF_WITHDRAWAL) {
+      if (this.balance >= amount) {
         this.balance -= amount;
         this.#qtdWithdrawal++;
         console.log(`Retirada realizada com sucesso. Seu saldo restante é R$ ${this.balance},00`)
@@ -18,7 +18,7 @@ class SavingAccount extends BankAccount {
       }
     } else {
       const amountWithTax = amount + (amount * this.#withdrawalTax);
-      if(this.balance >= amountWithTax) {
+      if (this.balance >= amountWithTax) {
         this.balance -= amountWithTax;
         this.#qtdWithdrawal++;
         console.log(`Retirada realizada com sucesso. Seu saldo restante é R$ ${this.balance},00`)
@@ -30,3 +30,5 @@ class SavingAccount extends BankAccount {
     console.log(`Você já realizou ${this.#qtdWithdrawal} retiradas.`);
   }
 }
+
+module.exports = { SavingAccount };

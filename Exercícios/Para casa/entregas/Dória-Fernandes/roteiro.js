@@ -85,8 +85,8 @@ currentAccount1.cashWithdrawal(300); // Retirada realizada. O saldo atual da con
 
 /** CONTA POUPANÇA */
 // Criação de conta poupança
-const savingAccount1 = new SavingAccount(client2, bank1, 5555, 6666, 0.1, 20);
-const savingAccount2 = new SavingAccount(client3, bank2, 7777, 8888, 0.05, 5);
+const savingAccount1 = new SavingAccount(client2, bank1, 5555, 6666, 20, 0.01);
+const savingAccount2 = new SavingAccount(client3, bank2, 7777, 8888, 5, 0.05);
 
 // Utilizando os métodos de Conta Poupança
 savingAccount1.creditAmount(1300); // O novo saldo da conta após o crédito é: R$ 1300,00

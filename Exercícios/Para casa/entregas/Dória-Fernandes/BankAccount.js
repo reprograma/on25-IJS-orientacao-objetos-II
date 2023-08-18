@@ -8,7 +8,7 @@ class BankAccount {
 	agencyNumber;
 	#balance = 0;
 	#qtdWithdrawal;
-    #withdrawalTax;
+	#withdrawalTax;
 
 	constructor(client, bank, accountNumber, agencyNumber) {
 		if (!(client instanceof Client)) {
@@ -22,7 +22,7 @@ class BankAccount {
 			undefined
 		) {
 			return new Error(
-				`Cliente do CPF ${client.cpf} não possui conta no banco ${bank.bankName}`
+				`Cliente do CPF ${client.cpf} não possui conta no banco ${bank.bankName},`
 			);
 		}
 		this.client = client;
@@ -41,12 +41,12 @@ class BankAccount {
 
 	creditAmount(amount) {
 		this.#balance += amount;
-		console.log(`O novo saldo da conta é: R$ ${this.#balance}`);
+		console.log(`Obrigada por confiar em nossos serviços, ${this.client.name}. Seu saldo atual é de R$${this.balance},00`)
 	}
 
 	debitAmount(amount) {
 		this.#balance -= amount;
-		console.log(`O novo saldo da conta é: R$ ${this.#balance}`);
+		console.log(`Débito realizado com sucesso. O novo saldo da conta é: R$ ${this.#balance},00`);
 	}
 
 	transferTo(anotherAccount, amount) {
@@ -59,8 +59,7 @@ class BankAccount {
 		if (this.bank.bankCode !== anotherAccount.bank.bankCode) {
 			amountToBeDebited = amount + amount * this.bank.transferTax;
 			console.log(
-				`Essa transferência terá uma taxa de ${
-					this.bank.transferTax * 100
+				`Essa transferência terá uma taxa de ${this.bank.transferTax * 100
 				}%, pois se trata de uma transferência entre bancos diferentes.`
 			);
 		}
@@ -75,8 +74,7 @@ class BankAccount {
 			);
 		} else {
 			console.log(
-				`Saldo insuficiente para realizar a transferência. Seu saldo atual é de ${
-					this.#balance
+				`Saldo insuficiente para realizar a transferência. Seu saldo atual é de ${this.#balance
 				}. Para realizar essa transferência você precisa ter ${amountToBeDebited} em conta.`
 			);
 		}
@@ -94,37 +92,23 @@ class BankAccount {
 			console.log(`Conta encerrada!`);
 		} else {
 			console.log(
-				`Você possui um saldo de R$ ${
-					this.#balance
+				`Você possui um saldo de R$ ${this.#balance
 				}. Para encerrar a conta é necessário que o saldo seja igual a zero.`
 			);
 		}
 	}
 
 	cashWithdrawal(amount) {
-        if (this.#qtdWithdrawal >= 2 && amount <= this.#balance) {
-            this.#balance -= amount;
-            this.#qtdWithdrawal += 1;
-            return console.log(`As primeiras 2 retiradas são gratuitas. Foi cobrado uma taxa de ${this.#withdrawalTax}, sacou o valor de ${amount - this.#withdrawalTax}, o saldo atual é de R$${this.#balance}. Você realizou ${this.#qtdWithdrawal} saque(s). Você não possui mais nenhuma retirada gratuita.`)
-        }
-        if (this.#qtdWithdrawal == 1 && amount <= this.#balance) {
-            this.#balance -= amount;
-            this.#qtdWithdrawal += 1;
-            return console.log(`As primeiras 2 retiradas são gratuitas. Retirada realizada com sucesso. O saldo atual é de R$${this.#balance}. Total de retiradas realizadas: ${this.#qtdWithdrawal}.  Você não possui mais nenhuma retirada gratuita.`)
-        } if (this.#qtdWithdrawal == 0 && amount <= this.#balance) {
-            this.#balance -= amount;
-            this.#qtdWithdrawal += 1;
-            return console.log(`As primeiras 2 retiradas são gratuitas. Retirada realizada com sucesso. O saldo atual é de R$${this.#balance}. Total de retiradas realizadas: ${this.#qtdWithdrawal}. Você ainda possui 1 retirada gratuita`);
-        } if (amount > this.#balance) {
-            return console.log(`Você não possui saldo o suficiente`)
-        } else {
-            console.log("Ops, ocorreu algum erro")
-        }
-    }
-	// Criar método cashWithdrawal
-	cashWithdrawal(amount) {
-		// Implementar esse método
+		if (amount <= this.balance) {
+			this.balance -= amount;
+			console.log(`Sacou o valor de ${amount} `)
+			console.log(`O saldo atual é de R$${this.balance}. `)
+			return;
+		} else {
+			console.log(`Você não possui saldo o suficiente`)
+		}
 	}
 }
+
 
 module.exports = { BankAccount };
