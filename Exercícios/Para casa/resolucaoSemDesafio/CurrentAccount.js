@@ -1,26 +1,29 @@
+const { Bank } = require('./Bank');
+const { Client } = require('./Client');
 const { BankAccount } = require('./BankAccount');
-
 class CurrentAccount extends BankAccount {
-	transferTo(anotherAccount, amount) {
-		if (!(anotherAccount instanceof BankAccount)) {
-			console.log('Informe uma conta válida!');
-			return;
-		}
+    constructor(client, bank, accountNumber, agencyNumber) {
+        super(client, bank, accountNumber, agencyNumber);
+    }
 
-		if (this.balance >= amount) {
-			this.balance -= amount;
-			anotherAccount.balance += amount;
-
-			console.log(`O saldo atual da conta de origem é de R$ ${this.balance}`);
-			console.log(
-				`O saldo atual da conta de destino é de R$ ${anotherAccount.balance}`
-			);
-		} else {
-			console.log(
-				`Saldo insuficiente para realizar a transferência. Seu saldo atual é de ${this.balance}. Para realizar essa transferência você precisa ter ${amount} em conta.`
-			);
-		}
-	}
+    transferTo(anotherAccount, amount) {
+        if (!(anotherAccount instanceof CurrentAccount)) {
+            console.log('Informe uma conta válida!');
+            return;
+        } else {
+            if (amount > this.balance) {
+                return console.log(`Seu saldo atual é insuficiente para realizar essa transferência. Seu saldo atual é de R$${this.balance},00`);
+            } else {
+                const anotherClientName = anotherAccount.client ? anotherAccount.client.name : 'cliente desconhecido';
+                if (amount <= this.balance) {
+                    anotherAccount.balance += amount;
+                    this.balance -= amount;
+                    return console.log(`Transferência realizada com sucesso para ${anotherClientName}. Seu saldo atual é de R$ ${this.balance},00`);
+                } else {
+                    return console.log('Ops, ocorreu um erro. Tente novamente mais tarde!');
+                }
+            }
+        }
+    }
 }
-
-module.exports = { CurrentAccount };
+module.exports = { CurrentAccount }
