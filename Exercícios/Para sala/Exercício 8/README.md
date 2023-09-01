@@ -9,13 +9,11 @@ Vamos retomar o [Exercício 5](../Exerc%C3%ADcio%205/), onde tínhamos o seguint
 
 ```javascript
 class Ingresso {
-	preco;
 	lote;
-
-	LOTE_PROMOCIONAL = 5;
-	PRIMEIRO_LOTE = 10;
-	SEGUNDO_LOTE = 15;
-	TERCEIRO_LOTE = 20;
+	preco_promocional = 10;
+	preco_primeiro_lote = 20;
+	preco_segundo_lote = 30;
+	preco_terceiro_lote = 40;
 
 	constructor(lote) {
 		this.lote = lote;
@@ -23,30 +21,26 @@ class Ingresso {
 
 	mostrarPreco() {
 		if (this.lote === 'promocional') {
-			this.preco = this.LOTE_PROMOCIONAL;
+			console.log(`Preço do ingresso: R$ ${this.preco_promocional}`);
 		} else if (this.lote === 'primeiro') {
-			this.preco = THIS.PRIMEIRO_LOTE;
+			console.log(`Preço do ingresso: R$ ${this.preco_primeiro_lote}`);
 		} else if (this.lote === 'segundo') {
-			this.preco = THIS.SEGUNDO_LOTE;
+			console.log(`Preço do ingresso: R$ ${this.preco_segundo_lote}`);
 		} else if (this.lote === 'terceiro') {
-			this.preco = THIS.TERCEIRO_LOTE;
+			console.log(`Preço do ingresso: R$ ${this.preco_terceiro_lote}`);
 		} else {
-			this.preco = undefined;
-			console.log('Lote não encontrado');
-			return;
+			console.log('Lote não encontrado.');
 		}
-
-		console.log(`R$ ${this.preco},00`);
 	}
 }
 
 class IngressoNormal extends Ingresso {}
 
 class IngressoVIP extends Ingresso {
-	LOTE_PROMOCIONAL = 50;
-	PRIMEIRO_LOTE = 60;
-	SEGUNDO_LOTE = 70;
-	TERCEIRO_LOTE = 80;
+	preco_promocional = 50;
+	preco_primeiro_lote = 60;
+	preco_segundo_lote = 70;
+	preco_terceiro_lote = 80;
 }
 ```
 

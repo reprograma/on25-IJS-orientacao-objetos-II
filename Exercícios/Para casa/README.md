@@ -77,6 +77,17 @@ Deve herdar a classe `BankAccount`.
 Deve possuir os seguintes atributos a mais:
 - [ ] `incomeRate`, taxa de rendimento, recebido na instanciação
 - [ ] `incomeDay`, dia de rendimento, recebido na instanciação
+
+Por fim, a classe `SavingAccount` deve possuir o seguinte método:
+- [ ] `generateIncome(currentDay)`, que recebe como o atributo o dia atual e, caso o dia atual seja igual ao dia de rendimento (`incomeDay`), deve atualizar o saldo, somando o valor rendido. Retorne o novo saldo na console.
+
+Teste tudo o que foi criado.
+
+---
+
+**Presentinho da prô pra terça:**
+**NÃO PRECISA FAZER ANTES!**
+A classe `SavingAccount` possuir os seguintes atributos a mais:
 - [ ] `qtdWithdrawal`: Quantidade de retiradas de dinheiro em bancos 24 horas
   - Deve ser inicializado com 0.
   - Deve ser um parâmetro privado.
@@ -104,23 +115,19 @@ Além disso, a classe `SavingAccount` deve sobrescrever o método `cashWithdrawa
   - Informe ao cliente seu novo saldo e a quantidade de retiradas feitas até o momento.
 - Caso não possua saldo suficiente, não realize a retirada e informe ao cliente.
 
-Por fim, a classe `SavingAccount` deve possuir o seguinte método:
-- [ ] `generateIncome(currentDay)`, que recebe como o atributo o dia atual e, caso o dia atual seja igual ao dia de rendimento (`incomeDay`), deve atualizar o saldo, somando o valor rendido. Retorne o novo saldo na console.
-
-Teste tudo o que foi criado.
-
 ___
 
+<!--
 DESAFIO:
 > Essa etapa **não** é obrigatória!!!
 
-Sua chefe busca uma pessoa que consiga desenvolver uma nova atualização para o sistema, e dará uma promoção para as pessoas desenvolvedoras que toparem!
+ Sua chefe busca uma pessoa que consiga desenvolver uma nova atualização para o sistema, e dará uma promoção para as pessoas desenvolvedoras que toparem!
 
 A atualização é a seguinte:
 - A partir de agora, teremos pessoas gerentes.
 - Cada banco terá um ou mais gerentes.
 - Cada cliente, quando se associar a um banco, terá um gerente daquele banco, escolhido de maneira aleatória.
-- Os gerentes sabem quem são seus clientes.
+- Os gerentes sabem quem são seus clientes. 
 
 Vamos entender como serão as nossas atualizações de código:
 ### Person
@@ -161,4 +168,4 @@ A classe `Client` deve ser alterada da seguinte maneira:
 
 ### BankAccount
 A classe `BankAccount` deve ser alterada da seguinte maneira:
-- No constructor, no momento em que se valida se o cliente tem conta naquele banco, `element.bankCode` agora será `element.bank.bankCode`, pois agora banks é uma array de objetos.
+- No constructor, no momento em que se valida se o cliente tem conta naquele banco, `element.bankCode` agora será `element.bank.bankCode`, pois agora banks é uma array de objetos. -->
