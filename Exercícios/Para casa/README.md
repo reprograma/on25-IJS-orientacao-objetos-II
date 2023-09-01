@@ -32,7 +32,7 @@ Você é desenvolvedora em uma empresa que trabalha com sistemas de gerenciament
   - [ ] `bank`, recebido na instanciação
   - [ ] `accountNumber`, recebido na instanciação
   - [ ] `agencyNumber`, recebido na instanciação
-  - [ ] `#balance`, privado e inicializado na classe com 0 (zero).
+  - [ ] `_balance`, privado e inicializado na classe com 0 (zero).
   
   E como métodos:
   - [ ] `get balance()`
