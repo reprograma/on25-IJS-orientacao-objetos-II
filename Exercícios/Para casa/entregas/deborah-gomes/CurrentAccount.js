@@ -5,33 +5,32 @@ class CurrentAccount extends BankAccount {
         super(client, bank, accountNumber, agencyNumber);
     }
 
-    isValidAccount(anotherAccount) {
+    isBankAccountValid(anotherAccount) {
         return anotherAccount instanceof BankAccount;
     }
 
-    hasSufficientBalance(amount) {
-        return this._balance >= amount;
+    hasSufficientBalanceForTransfer(amount) {
+        return this.getBalance() >= amount;
     }
 
     transferTo(anotherAccount, amount) {
-        if (!this.isValidAccount(anotherAccount)) {
+        if (!this.isBankAccountValid(anotherAccount)) {
             console.log('Informe uma conta válida!');
             return;
         }
 
-        if (this.hasSufficientBalance(amount)) {
-            this._balance -= amount;
-            anotherAccount.balance += amount;
+        if (this.hasSufficientBalanceForTransfer(amount)) {
+            this.debitAmount(amount);
+            anotherAccount.creditAmount(amount);
 
             console.log(`Transferência de R$ ${amount} efetuada com sucesso.`);
-            console.log(`Saldo atual da conta de origem é de R$ ${this._balance}`);
-            console.log(`Saldo atual da conta de destino é de R$ ${anotherAccount.balance}`);
+            console.log(`Saldo atual da conta de origem é de R$ ${this.getBalance()}`);
+            console.log(`Saldo atual da conta de destino é de R$ ${anotherAccount.getBalance()}`);
         } else {
             console.log(`Saldo insuficiente para realizar a transferência.`);
         }
     }
-
-    
 }
 
 module.exports = { CurrentAccount };
+

@@ -1,29 +1,29 @@
 class Bank {
-	bankCode;
-	bankName;
-	#trasferTax;
+	#bankCode;
+	#bankName;
+	#transferTax;
 	#managers = [];
 	static createdBanks = [];
-
+  
 	constructor(bankCode, bankName, transferTax) {
-		this.bankCode = bankCode;
-		this.bankName = bankName;
-		this.#trasferTax = transferTax;
-		this.constructor.createdBanks.push({
-			bankCode: this.bankCode,
-			qtdClients: 0,
-		});
+	  this.#bankCode = bankCode;
+	  this.#bankName = bankName;
+	  this.#transferTax = transferTax;
+	  Bank.createdBanks.push({
+		bankCode: this.#bankCode,
+		qtdClients: 0,
+	  });
 	}
-
+  
 	get transferTax() {
-		return this.#trasferTax;
+	  return this.#transferTax;
 	}
-
-	contractManager(managers) {
-		this.#managers.push(managers);
-		console.log(`Gerente ${this.#managers.name} contratado para o banco ${this.bankName}`);
-	  }
-	
-}
-
-module.exports = { Bank };
+  
+	contractManager(manager) {
+	  this.#managers.push(manager);
+	  console.log(`Gerente ${manager.name} contratado para o banco ${this.#bankName}`);
+	}
+  }
+  
+  module.exports = { Bank };
+  

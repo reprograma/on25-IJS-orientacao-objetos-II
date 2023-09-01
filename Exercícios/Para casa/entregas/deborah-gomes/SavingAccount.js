@@ -1,5 +1,3 @@
-const { Bank } = require('./Bank');
-const { Client } = require('./Client');
 const { BankAccount } = require('./BankAccount');
 
 class SavingAccount extends BankAccount {
@@ -29,33 +27,34 @@ class SavingAccount extends BankAccount {
             return;
         }
 
-        console.log(`Saldo atual da conta: R$ ${this.balance}`);
+        console.log(`Saldo atual da conta: R$ ${this.getBalance()}`);
         console.log(`Quantidade de retiradas gratuitas feitas: ${this.#qtdWithdrawal} de ${this.#MAX_OF_WITHDRAWAL}`);
 
         const isWithinWithdrawalLimit = this.#qtdWithdrawal < this.#MAX_OF_WITHDRAWAL;
         const taxedAmount = isWithinWithdrawalLimit ? amount : amount + amount * this.#withdrawalTax;
 
-        if (this.balance >= taxedAmount) {
-            this.balance -= taxedAmount;
+        if (this.hasSufficientBalance(taxedAmount)) {
+            this.debitAmount(taxedAmount);
             this.#qtdWithdrawal++;
             const message = isWithinWithdrawalLimit
                 ? `Saque de R$ ${amount} realizado com sucesso.`
                 : `Saque de R$ ${amount} realizado com taxa de ${this.#withdrawalTax * 100}%.`;
             console.log(message);
-            console.log(`Saldo atual da conta: R$ ${this.balance}`);
+            console.log(`Saldo atual da conta: R$ ${this.getBalance()}`);
             console.log(`Quantidade de retiradas gratuitas feitas: ${this.#qtdWithdrawal} de ${this.#MAX_OF_WITHDRAWAL}`);
         } else {
-            console.log(`Saldo insuficiente para realizar o saque. Seu saldo atual é de R$ ${this.balance}.`);
+            console.log(`Saldo insuficiente para realizar o saque. Seu saldo atual é de R$ ${this.getBalance()}.`);
         }
     }
 
     generateIncome(currentDay) {
         if (currentDay === this.#incomeDay) {
-            const incomeAmount = this.balance * this.#incomeRate;
-            this.balance += incomeAmount;
-            console.log(`Rendimento de R$ ${incomeAmount} aplicado. Novo saldo: R$ ${this.balance}`);
+            const incomeAmount = this.getBalance() * this.#incomeRate;
+            this.creditAmount(incomeAmount);
+            console.log(`Rendimento de R$ ${incomeAmount} aplicado. Novo saldo: R$ ${this.getBalance()}`);
         }
     }
 }
 
 module.exports = { SavingAccount };
+

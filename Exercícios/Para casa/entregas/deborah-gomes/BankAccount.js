@@ -3,22 +3,35 @@ const { Client } = require('./Client');
 
 class BankAccount {
     constructor(client, bank, accountNumber, agencyNumber) {
-        if (!(client instanceof Client)) {
-            throw new Error('Informe um cliente válido');
-        }
-        if (!(bank instanceof Bank)) {
-            throw new Error('Informe um banco válido');
-        }
-        if (!client.hasAccountInThisBank(bank)) {
-            throw new Error(
-                `Cliente do CPF ${client.cpf} não possui conta no banco ${bank.bankName}`
-            );
-        }
+        this.validateClient(client);
+        this.validateBank(bank);
+        this.validateClientAccount(client, bank);
+
         this.client = client;
         this.bank = bank;
         this.accountNumber = accountNumber;
         this.agencyNumber = agencyNumber;
         this._balance = 0;
+    }
+
+    validateClient(client) {
+        if (!(client instanceof Client)) {
+            throw new Error('Informe um cliente válido');
+        }
+    }
+
+    validateBank(bank) {
+        if (!(bank instanceof Bank)) {
+            throw new Error('Informe um banco válido');
+        }
+    }
+
+    validateClientAccount(client, bank) {
+        if (!client.hasAccountInBank(bank)) {
+            throw new Error(
+                `Cliente do CPF ${client.cpf} não possui conta no banco ${bank.bankName}`
+            );
+        }
     }
 
     getBalance() {
@@ -62,7 +75,7 @@ class BankAccount {
         } else {
             console.log(
                 `Saldo insuficiente para realizar a transferência. Seu saldo atual é de ${
-                    this.balance
+                    this._balance
                 }. Para realizar essa transferência você precisa ter ${amountToBeDebited} em conta.`
             );
         }
@@ -106,4 +119,5 @@ class BankAccount {
 }
 
 module.exports = { BankAccount };
+
 
