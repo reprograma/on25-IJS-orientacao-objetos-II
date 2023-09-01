@@ -2,8 +2,7 @@ class Bank {
 	bankCode;
 	bankName;
 	#trasferTax;
-	// DESAFIO: Criar atributo managers (inicializado como array vazia)
-
+	#managers = [];
 	static createdBanks = [];
 
 	constructor(bankCode, bankName, transferTax) {
@@ -20,7 +19,11 @@ class Bank {
 		return this.#trasferTax;
 	}
 
-	// DESAFIO: Criar método contractManager
+	contractManager(managers) {
+		this.#managers.push(managers);
+		console.log(`Gerente ${this.#managers.name} contratado para o banco ${this.bankName}`);
+	  }
+	
 }
 
 module.exports = { Bank };
