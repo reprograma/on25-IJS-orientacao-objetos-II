@@ -54,6 +54,7 @@ class BankAccount {
 		}
 
 		let amountToBeDebited = amount;
+
 		if (this.bank.bankCode !== anotherAccount.bank.bankCode) {
 			amountToBeDebited = amount + amount * this.bank.transferTax;
 			console.log(
@@ -101,7 +102,12 @@ class BankAccount {
 
 	// Criar método cashWithdrawal
 	cashWithdrawal(amount) {
-		// Implementar esse método
+		if(amount <= this.#balance) {
+			this.balance -= amount;
+			console.log("O novo saldo é de " + this.#balance)
+		} else {
+			console.log("Saldo insuficiente!")
+		}
 	}
 }
 
