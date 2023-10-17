@@ -1,8 +1,8 @@
 // Importações
 const { Bank } = require('./Bank');
 const { Client } = require('./Client');
-const { SavingAccount } = require('./SavingAccount');
-const { CurrentAccount } = require('./CurrentAccount');
+const { SavingAccount } = require('./SavingAccount')
+const { CurrentAccount } = require('../entregas/Daniela Botelho/CurrentAccount');
 
 // Criação de bancos
 const bank1 = new Bank(100, 'Lua Bank', 0.01);
@@ -38,7 +38,6 @@ console.log(bank2);
 Exemplo do que será impresso:
 Bank { bankCode: 100, bankName: 'Lua Bank' }
 */
-
 // Conferindo clientes
 console.log(client1);
 console.log(client2);
@@ -84,6 +83,9 @@ currentAccount1.cashWithdrawal(200); // Retirada realizada. O saldo atual da con
 currentAccount1.cashWithdrawal(300); // Retirada realizada. O saldo atual da conta é de R$ 2385.
 
 /** CONTA POUPANÇA */
+console.log('')
+console.log("-----------------CONTA POUPANÇA---------------------")
+console.log('')
 // Criação de conta poupança
 const savingAccount1 = new SavingAccount(client2, bank1, 5555, 6666, 0.1, 20);
 const savingAccount2 = new SavingAccount(client3, bank2, 7777, 8888, 0.05, 5); 
@@ -97,6 +99,8 @@ savingAccount1.generateIncome(20); // Seu novo saldo após rendimentos é de R$ 
 savingAccount1.transferTo(savingAccount2, 100);
 
 // Retirada em banco 24 horas
+console.log("--------------------------------------")
+savingAccount2.generateIncome(2); 
 savingAccount2.creditAmount(1000); // O novo saldo da conta após o crédito é: R$ 1000,00
 savingAccount2.cashWithdrawal(100);
 savingAccount2.cashWithdrawal(500);
